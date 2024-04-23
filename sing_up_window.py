@@ -29,28 +29,28 @@ def sign_up_fields():
     password_entry.grid_forget()
 
     '''Create labels and entry fields'''
-    first_name_label = Label(root, text="Full name: ")
+    first_name_label = Label(root, text="First name: ")
     first_name_label.grid(padx=10, pady=5)
     first_name_label.place(x=350, y=200)
     first_name_entry = Entry(root)
     first_name_entry.grid(padx=10, pady=5)
     first_name_entry.place(x=350, y=230)
 
-    last_name_label = Label(root, text="Full name: ")
+    last_name_label = Label(root, text="Last name: ")
     last_name_label.grid(padx=10, pady=5)
     last_name_label.place(x=350, y=250)
     last_name_entry = Entry(root)
     last_name_entry.grid(padx=10, pady=5)
     last_name_entry.place(x=350, y=270)
 
-    email_label = Label(root, text="Full name: ")
+    email_label = Label(root, text="Email name: ")
     email_label.grid(padx=10, pady=5)
     email_label.place(x=350, y=300)
     email_entry = Entry(root)
     email_entry.grid(padx=10, pady=5)
     email_entry.place(x=350, y=320)
 
-    password_label = Label(root, text="Full name: ")
+    password_label = Label(root, text="Password name: ")
     password_label.grid(padx=10, pady=5)
     password_label.place(x=350, y=350)
     password_entry = Entry(root, show="*")
@@ -76,14 +76,14 @@ def sign_up_window():
     print("Password:", password)
 
 '''crating labels and entry fields for sign in'''
-first_name_label = Label(root, text="Email:")
+first_name_label = Label(root, text="Firs Name:")
 first_name_label.grid(padx=10, pady=5, sticky="e")
 first_nam_label.place(x=350, y=230)
 first_name_entry. = Entry(root)
 first_name_entry.grid(padx=10, pady=5)
 first_name_entry.place(x=350, y=250)
 
-last_name_label = Label(root, text="Email:")
+last_name_label = Label(root, text="Last Name:")
 last_name_label.grid(padx=10, pady=5, sticky="e")
 last_name_label.place(x=350, y=270)
 last_name_entry = Entry(root)
