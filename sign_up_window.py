@@ -1,6 +1,6 @@
 '''GUI for sing up window'''
 from tkinter import*
-from db_connection import sign_up, login
+#from db_connection import sign_up, login
 
 email_label = None
 email_entry = None
@@ -27,6 +27,7 @@ def sign_up_fields():
     email_entry.grid_forget()
     password_label.grid_forget()
     password_entry.grid_forget()
+    login_button.grid_forget()
 
     '''Create labels and entry fields'''
     first_name_label = Label(root, text="First name: ")
@@ -92,14 +93,22 @@ last_name_entry.place(x=350, y=300)
 
 email_label = Label(root, text="Email:")
 email_label.grid(padx=10, pady=5)
+<<<<<<< HEAD:sign_up_window.py
+email_label.place(x=350, y=230)
+=======
 email_label.place(x=350, y=320)
+>>>>>>> main:sing_up_window.py
 email_entry = Entry(root)
 email_entry.grid(padx=10, pady=5)
 email_entry.place(x=350, y=350)
 
 password_label = Label(root, text="Password:")
 password_label.grid(padx=10, pady=5)
+<<<<<<< HEAD:sign_up_window.py
+password_label.place(x=350, y=270)
+=======
 password_label.place(x=350, y=370)
+>>>>>>> main:sing_up_window.py
 password_entry = Entry(root, show="*")
 password_entry.grid(padx=10, pady=5)
 password_entry.place(x=350, y=400)
