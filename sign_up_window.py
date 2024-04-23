@@ -79,8 +79,8 @@ def sign_up_window():
 '''crating labels and entry fields for sign in'''
 first_name_label = Label(root, text="Firs Name:")
 first_name_label.grid(padx=10, pady=5)
-first_nam_label.place(x=350, y=230)
-first_name_entry. = Entry(root)
+first_name_label.place(x=350, y=230)
+first_name_entry = Entry(root)
 first_name_entry.grid(padx=10, pady=5)
 first_name_entry.place(x=350, y=250)
 
@@ -93,22 +93,16 @@ last_name_entry.place(x=350, y=300)
 
 email_label = Label(root, text="Email:")
 email_label.grid(padx=10, pady=5)
-<<<<<<< HEAD:sign_up_window.py
 email_label.place(x=350, y=230)
-=======
 email_label.place(x=350, y=320)
->>>>>>> main:sing_up_window.py
 email_entry = Entry(root)
 email_entry.grid(padx=10, pady=5)
 email_entry.place(x=350, y=350)
 
 password_label = Label(root, text="Password:")
 password_label.grid(padx=10, pady=5)
-<<<<<<< HEAD:sign_up_window.py
 password_label.place(x=350, y=270)
-=======
 password_label.place(x=350, y=370)
->>>>>>> main:sing_up_window.py
 password_entry = Entry(root, show="*")
 password_entry.grid(padx=10, pady=5)
 password_entry.place(x=350, y=400)
@@ -122,7 +116,7 @@ login_button.place(x=350, y=420)
     
 create_account_button = Button(root, text="Create Account", command=sign_up_fields)
 create_account_button.grid(padx=10, pady=5)
-create_account_button.place(x=350, y=450)
+create_account_button.place(x=350, y=470)
 
 root.mainloop()
 
