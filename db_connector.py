@@ -1,12 +1,3 @@
-'''import mysql.connector
-
-conInfo = {"user": "Local instance 3306", "password": "Sahra143", "host": 
-"localhost", "port": "3306", "database": "userDB", 
-"raise_on_warnings": True}
-myCon = mysql.connector.connect(**conInfo)
-
-myCon.close()'''
-
 import mysql.connector
 
 '''Establishing a connection to the MySQL database'''
