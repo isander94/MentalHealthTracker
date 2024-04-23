@@ -77,28 +77,28 @@ def sign_up_window():
 
 '''crating labels and entry fields for sign in'''
 first_name_label = Label(root, text="Firs Name:")
-first_name_label.grid(padx=10, pady=5, sticky="e")
+first_name_label.grid(padx=10, pady=5)
 first_nam_label.place(x=350, y=230)
 first_name_entry. = Entry(root)
 first_name_entry.grid(padx=10, pady=5)
 first_name_entry.place(x=350, y=250)
 
 last_name_label = Label(root, text="Last Name:")
-last_name_label.grid(padx=10, pady=5, sticky="e")
+last_name_label.grid(padx=10, pady=5)
 last_name_label.place(x=350, y=270)
 last_name_entry = Entry(root)
 last_name_entry.grid(padx=10, pady=5)
 last_name_entry.place(x=350, y=300)
 
 email_label = Label(root, text="Email:")
-email_label.grid(padx=10, pady=5, sticky="e")
+email_label.grid(padx=10, pady=5)
 email_label.place(x=350, y=320)
 email_entry = Entry(root)
 email_entry.grid(padx=10, pady=5)
 email_entry.place(x=350, y=350)
 
 password_label = Label(root, text="Password:")
-password_label.grid(padx=10, pady=5, sticky="e")
+password_label.grid(padx=10, pady=5)
 password_label.place(x=350, y=370)
 password_entry = Entry(root, show="*")
 password_entry.grid(padx=10, pady=5)
