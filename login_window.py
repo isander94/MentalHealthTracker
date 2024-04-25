@@ -17,6 +17,7 @@ class LoginWindow(Tk):
         self.mainloop()
 
     def window(self):
+        print("Hi")
         usernameLabel = Label(self, text="Username")
         usernameLabel.place(x=350, y=250)
 
