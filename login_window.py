@@ -33,14 +33,17 @@ class LoginWindow(Tk):
 
         #login = main.Main.menu(root)
         log = main
-        LoginButton = Button(self, text="Login")
+        LoginButton = Button(self, text="Login", command=self.openMenu)
         LoginButton.place(x=350, y=340)
-        LoginButton.bind("<Button>", lambda e:log.Main(self) )
+        LoginButton.bind("<Button>", lambda e:log.Main(self))
 
         signUp = sign_up_window
         createAccountButton = Button(self, text="Create account")
         createAccountButton.place(x=350,y=400)
         createAccountButton.bind("<Button>", lambda e: signUp.LoginSystem(self) )
+
+    def openMenu(self):
+        self.withdraw()
 
 
 LoginWindow()

@@ -11,5 +11,9 @@ class Main(Toplevel):
         label = Label(self, text="Welcome to the menu")
         label.pack()
 
-    def menu(root):
-        pass
+        quit = Button(self, text="quit program", command=self.on_close)
+        quit.pack()
+
+    def on_close(self):
+        self.destroy()
+        self.master.destroy()
