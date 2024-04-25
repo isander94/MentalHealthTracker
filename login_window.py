@@ -1,34 +1,46 @@
 from tkinter import *
 from tkinter.ttk import *
 import main
-#import sign_up_window
+import sign_up_window
 
-root = Tk()
-root.geometry("900x900")
-root.title("Log In")
 
-usernameLabel = Label(root, text="Username")
-usernameLabel.place(x=350, y=250)
 
-userEntry = Entry(root)
-userEntry.place(x=350,y=270)
-username = userEntry.get()
+class LoginWindow(Tk):
 
-passwordLabel = Label(root, text="Password")
-passwordLabel.place(x=350,y=300)
+    def __init__(self):
+        super().__init__()
+        self.title("Log in")
+        self.geometry("900x900")
 
-passwordEntry = Entry(root)
-passwordEntry.place(x=350, y=320)
-password = passwordEntry.get()
+        self.window()
 
-#login = main.Main.menu(root)
-log = main
-LoginButton = Button(root, text="Login")
-LoginButton.place(x=350, y=340)
-LoginButton.bind("<Button>", lambda e:log.Main(root) )
+        self.mainloop()
 
-#signUp = sign_up_window
-createAccountButton = Button(root, text="Create account")
-createAccountButton.place(x=350, y=400)
+    def window(self):
+        usernameLabel = Label(self, text="Username")
+        usernameLabel.place(x=350, y=250)
 
-root.mainloop()
+        userEntry = Entry(self)
+        userEntry.place(x=350,y=270)
+        username = userEntry.get()
+
+        passwordLabel = Label(self, text="Password")
+        passwordLabel.place(x=350,y=300)
+
+        passwordEntry = Entry(self)
+        passwordEntry.place(x=350, y=320)
+        password = passwordEntry.get()
+
+        #login = main.Main.menu(root)
+        log = main
+        LoginButton = Button(self, text="Login")
+        LoginButton.place(x=350, y=340)
+        LoginButton.bind("<Button>", lambda e:log.Main(self) )
+
+        signUp = sign_up_window
+        createAccountButton = Button(self, text="Create account")
+        createAccountButton.place(x=350,y=400)
+        createAccountButton.bind("<Button>", lambda e: signUp.LoginSystem(self) )
+
+
+LoginWindow()
