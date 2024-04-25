@@ -14,10 +14,10 @@ class LoginSystem(Toplevel):
         self.first_name_entry.grid(padx=10, pady=5)
         self.first_name_entry.place(x=350, y=230)
 
-        self.last_name_label = Label(root, text="Last name: ")
+        self.last_name_label = Label(self, text="Last name: ")
         self.last_name_label.grid(padx=10, pady=5)
         self.last_name_label.place(x=350, y=250)
-        self.last_name_entry = Entry(root)
+        self.last_name_entry = Entry(self)
         self.last_name_entry.grid(padx=10, pady=5)
         self.last_name_entry.place(x=350, y=270)
 
