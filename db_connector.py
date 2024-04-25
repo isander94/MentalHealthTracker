@@ -3,9 +3,9 @@ import mysql.connector
 '''Establishing a connection to the MySQL database'''
 db_connection = mysql.connector.connect(
     host="localhost",
-    user="your_username",
-    password="your_password",
-    database="your_database"
+    user="root",
+    password="team16",
+    database="mentalHealthTrackerDB"
 )
 
 def login(email, password):
@@ -33,7 +33,7 @@ def sign_up():
     cursor = db_connection.cursor()
 
     ''' Check if email already exists in the database'''
-    cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
+    cursor.execute("SELECT * FROM users WHERE email = %s", (email))
     existing_user = cursor.fetchone()
 
     if existing_user:
