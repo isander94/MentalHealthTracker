@@ -1,4 +1,5 @@
 from tkinter import *
+import main
 
 root = Tk()
 root.geometry("900x900")
@@ -17,6 +18,11 @@ passwordLabel.place(x=350,y=300)
 passwordEntry = Entry(root)
 passwordEntry.place(x=350, y=320)
 password = passwordEntry.get()
+
+login = main.Main.menu()
+LoginButton = Button(root, text="Login", fg="black", bg="grey", command=login)
+LoginButton.place(x=350, y=340)
+
 
 
 root.mainloop()
