@@ -1,5 +1,4 @@
 import mysql.connector
-
 '''Establishing a connection to the MySQL database'''
 db_connection = mysql.connector.connect(
     host="localhost",
@@ -18,7 +17,7 @@ def login(self, email, password):
     users = cursor.fetchall()
     for user in users:
         print(user)
-    
+
     if user:
         print("Login successful")
         return True
@@ -45,7 +44,6 @@ def sign_up(self):
     else:
         '''Insert new user into the database'''
         cursor.execute("INSERT INTO users VALUES (%s, %s, %s, %s)", (first_name, last_name, email, password))
-        
+
         db_connection.commit()
         print("User created successfully")
-

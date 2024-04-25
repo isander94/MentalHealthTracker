@@ -1,6 +1,6 @@
 '''GUI for sing up window'''
 from tkinter import*
-#from db_connector import check_credentials, add_user
+from db_connector import check_credentials, add_user
 class LoginSystem:
     def __init__(self, root): #add as a parameter user_db 
         self.root = root
