@@ -47,7 +47,14 @@ class LoginSystem(Toplevel):
         #self.user_db = user_db'''
         
 
-        self.create_login_ui()
+        '''self.create_login_ui()'''
+
+        quit = Button(self, text="quit program", command=self.on_close)
+        quit.pack()
+
+    def on_close(self):
+        self.destroy()
+        self.master.destroy()
         
 
     def login(self):
