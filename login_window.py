@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter.ttk import *
 import main
-#import sign_up_window
+import sign_up_window
 
 root = Tk()
 root.geometry("900x900")
@@ -27,8 +27,9 @@ LoginButton = Button(root, text="Login")
 LoginButton.place(x=350, y=340)
 LoginButton.bind("<Button>", lambda e:log.Main(root) )
 
-#signUp = sign_up_window
+signUp = sign_up_window
 createAccountButton = Button(root, text="Create account")
-createAccountButton.place(x=350, y=400)
+createAccountButton.place(x=350,y=400)
+createAccountButton.bind("<Button>", lambda e: signUp.LoginSystem(root) )
 
 root.mainloop()

@@ -1,9 +1,41 @@
 '''GUI for sing up window'''
 from tkinter import*
-from db_connector import check_credentials, add_user
-class LoginSystem:
-    def __init__(self, root): #add as a parameter user_db 
-        self.root = root
+#from db_connector import check_credentials, add_user
+class LoginSystem(Toplevel):
+    def __init__(self, root = None): #add as a parameter user_db 
+        
+        super().__init__(root)
+        self.title("sign up")
+        self.geometry("900x900")
+        self.first_name_label = Label(self, text="First name: ")
+        self.first_name_label.grid(padx=10, pady=5)
+        self.first_name_label.place(x=350, y=200)
+        self.first_name_entry = Entry(self)
+        self.first_name_entry.grid(padx=10, pady=5)
+        self.first_name_entry.place(x=350, y=230)
+
+        self.last_name_label = Label(root, text="Last name: ")
+        self.last_name_label.grid(padx=10, pady=5)
+        self.last_name_label.place(x=350, y=250)
+        self.last_name_entry = Entry(root)
+        self.last_name_entry.grid(padx=10, pady=5)
+        self.last_name_entry.place(x=350, y=270)
+
+        self.email_label = Label(self, text="Email name: ")
+        self.email_label.grid(padx=10, pady=5)
+        self.email_label.place(x=350, y=300)
+        self.email_entry = Entry(self)
+        self.email_entry.grid(padx=10, pady=5)
+        self.email_entry.place(x=350, y=320)
+
+        self.password_label = Label(self, text="Password name: ")
+        self.password_label.grid(padx=10, pady=5)
+        self.password_label.place(x=350, y=350)
+        self.password_entry = Entry(self, show="*")
+        self.password_entry.grid(padx=10, pady=5)
+        self.password_entry.place(x=350, y=370)
+        
+        '''self.root = root
         self.email_label = None
         self.email_entry = None
         self.password_label = None
@@ -12,7 +44,7 @@ class LoginSystem:
         self.last_name_entry = None
         self.first_name_label = None
         self.first_name_entry = None
-        #self.user_db = user_db
+        #self.user_db = user_db'''
         
 
         self.create_login_ui()
@@ -32,52 +64,26 @@ class LoginSystem:
         print("Invalid email or password")
 
     
-    def sign_up_fields(self):
+    def sign_up_fields(root):
         '''function for showing creating new account fields'''
         global email_entry, email_label, password_entry, password_label
-        self.email_label.place_forget()
+        '''self.email_label.place_forget()
         self.email_entry.place_forget()
         self.password_label.place_forget()
         self.password_entry.place_forget()
-        self.login_button.place_forget()
+        self.login_button.place_forget()'''
 
         '''Create labels and entry fields'''
-        self.first_name_label = Label(self.root, text="First name: ")
-        self.first_name_label.grid(padx=10, pady=5)
-        self.first_name_label.place(x=350, y=200)
-        self.first_name_entry = Entry(self.root)
-        self.first_name_entry.grid(padx=10, pady=5)
-        self.first_name_entry.place(x=350, y=230)
-
-        self.last_name_label = Label(self.root, text="Last name: ")
-        self.last_name_label.grid(padx=10, pady=5)
-        self.last_name_label.place(x=350, y=250)
-        self.last_name_entry = Entry(self.root)
-        self.last_name_entry.grid(padx=10, pady=5)
-        self.last_name_entry.place(x=350, y=270)
-
-        self.email_label = Label(self.root, text="Email name: ")
-        self.email_label.grid(padx=10, pady=5)
-        self.email_label.place(x=350, y=300)
-        self.email_entry = Entry(self.root)
-        self.email_entry.grid(padx=10, pady=5)
-        self.email_entry.place(x=350, y=320)
-
-        self.password_label = Label(self.root, text="Password name: ")
-        self.password_label.grid(padx=10, pady=5)
-        self.password_label.place(x=350, y=350)
-        self.password_entry = Entry(self.root, show="*")
-        self.password_entry.grid(padx=10, pady=5)
-        self.password_entry.place(x=350, y=370)
+        
 
         '''Create account button'''
-        self.create_account_button = Button(self.root, text="Create Account", command=self.sign_up_window)
-        self.create_account_button.grid(columnspan=2, padx=10, pady=5)
-        self.create_account_button.place(x=350, y=400)
+        '''root.create_account_button = Button(root, text="Create Account", command=root.sign_up_window)
+        root.create_account_button.grid(columnspan=2, padx=10, pady=5)
+        root.create_account_button.place(x=350, y=400)'''
         
         '''back to login button'''
-        self.back_login_button = Button(self.root, text="Create Account", command=self.back_to_login)
-        self.back_login_button.place(x=350, y=400)
+        '''root.back_login_button = Button(root, text="Create Account", command=root.back_to_login)
+        root.back_login_button.place(x=350, y=400)'''
 
 
     def sign_up_window(self):
@@ -139,7 +145,7 @@ class LoginSystem:
         self.create_login_ui()
 
 '''Creating the main window'''
-root = Tk()
+'''root = Tk()
 root.geometry("900x900")
 root.title("Login")
 #user_db = DatabaseManager()
@@ -147,8 +153,8 @@ root.title("Login")
 #login_system = LoginSystem(root, user_db)
 login_system = LoginSystem(root)
 
-root.mainloop()
-
+#root.mainloop()
+'''
 
 
 
