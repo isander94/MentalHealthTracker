@@ -87,8 +87,8 @@ class LoginSystem:
         last_name = self.last_name_entry.get()
         email = self.email.get()
         password = self.password.get()
-        '''Connect to database'''
 
+        '''Connect to database'''
         if self.user_db.add_user(first_name, last_name, email, password):
             self.message_label.config(text="Account created successfully")
         else:
