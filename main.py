@@ -7,9 +7,15 @@ class Main(Toplevel):
 
         super().__init__(root)
         self.title("Menu")
-        self.geometry("200x200")
-        label = Label(self, text="Welcome to the menu")
+        self.geometry("900x900")
+        label = Label(self, text="Welcome to the menu\nWhat do you want to do today?")
         label.pack()
+        
+        notes = Button(self, text="Daily journal")
+        notes.pack()
+
+        stats = Button(self, text="This weeks statistics")
+        stats.pack()
 
         quit = Button(self, text="quit program", command=self.on_close)
         quit.pack()
