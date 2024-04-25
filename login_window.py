@@ -1,4 +1,6 @@
 from tkinter import *
+import main
+import sign_up_window
 
 root = Tk()
 root.geometry("900x900")
@@ -18,5 +20,12 @@ passwordEntry = Entry(root)
 passwordEntry.place(x=350, y=320)
 password = passwordEntry.get()
 
+login = main.Main.menu()
+LoginButton = Button(root, text="Login", fg="black", bg="grey", command=login)
+LoginButton.place(x=350, y=340)
+
+signUp = sign_up_window
+createAccountButton = Button(root, text="Create account", fg="black", bg="grey", command=signUp)
+createAccountButton.place(x=350, y=400)
 
 root.mainloop()

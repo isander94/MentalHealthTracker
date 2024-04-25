@@ -1,4 +1,6 @@
 
-def showChart():
-    pass
+class Statistic:
+    
+    def showChart():
+        pass
 
