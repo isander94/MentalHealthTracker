@@ -1,5 +1,5 @@
 '''GUI for sing up window'''
-from tkinter import*
+from tkinter import *
 #from db_connector import check_credentials, add_user
 class LoginSystem(Toplevel):
     def __init__(self, root = None): #add as a parameter user_db 
@@ -48,9 +48,14 @@ class LoginSystem(Toplevel):
         
 
         '''self.create_login_ui()'''
-
+        goBack = Button(self, text="Create account", command=self.go_back)
+        goBack.pack()
         quit = Button(self, text="quit program", command=self.on_close)
         quit.pack()
+
+    def go_back(self):
+        self.destroy()
+        self.master.deiconify()
 
     def on_close(self):
         self.destroy()
