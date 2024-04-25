@@ -1,8 +1,15 @@
+from tkinter import *
+from tkinter.ttk import *
 
+class Main(Toplevel):
 
-class Main():
-    def __init__(self):
-        pass
+    def __init__(self, root = None):
 
-    def menu():
+        super().__init__(root)
+        self.title("Menu")
+        self.geometry("200x200")
+        label = Label(self, text="Welcome to the menu")
+        label.pack()
+
+    def menu(root):
         pass
