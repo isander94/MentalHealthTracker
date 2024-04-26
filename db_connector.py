@@ -48,5 +48,5 @@ class DatabaseManager():
             '''Insert new user into the database'''
             cursor.execute("INSERT INTO users VALUES (%s, %s, %s, %s)", (first_name, last_name, email, password))
 
-            db_connection.commit()
-            #print("User created successfully")
+            self.db_connection.commit()
+            print("User created successfully")
