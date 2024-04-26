@@ -23,3 +23,5 @@ class Main(Toplevel):
     def on_close(self):
         self.destroy()
         self.master.destroy()
+    
+        

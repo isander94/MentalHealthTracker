@@ -82,14 +82,15 @@ class LoginSystem:
 
 
     def sign_up_window(self):
+        print("Here")
         '''Function for creating a new account'''
         first_name = self.first_name_entry.get()
         last_name = self.last_name_entry.get()
-        email = self.email.get()
-        password = self.password.get()
+        email = self.email_entry.get()
+        password = self.password_entry.get()
 
         '''Connect to database'''
-        if self.user_db.add_user(first_name, last_name, email, password):
+        if self.user_db.add_user(self, first_name, last_name, email, password):
             self.message_label.config(text="Account created successfully")
         else:
             self.message_label.config(text="Email already exists")
