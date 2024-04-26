@@ -4,7 +4,6 @@ import main
 import sign_up_window
 
 
-
 class LoginWindow(Tk):
 
     def __init__(self):
@@ -17,7 +16,6 @@ class LoginWindow(Tk):
         self.mainloop()
 
     def window(self):
-        print("Hi")
         usernameLabel = Label(self, text="Username")
         usernameLabel.place(x=350, y=250)
 
@@ -33,15 +31,23 @@ class LoginWindow(Tk):
         password = passwordEntry.get()
 
         #login = main.Main.menu(root)
-        log = main
-        LoginButton = Button(self, text="Login")
+        #log = main
+        LoginButton = Button(self, text="Login", command=self.openMenu)
         LoginButton.place(x=350, y=340)
-        LoginButton.bind("<Button>", lambda e:log.Main(self) )
+       # LoginButton.bind("<Button>", lambda e:log.Main(self))
 
-        signUp = sign_up_window
-        createAccountButton = Button(self, text="Create account")
+        #signUp = sign_up_window
+        createAccountButton = Button(self, text="Create account", command=self.openSignUp)
         createAccountButton.place(x=350,y=400)
-        createAccountButton.bind("<Button>", lambda e: signUp.LoginSystem(self) )
+        #createAccountButton.bind("<Button>", lambda e: signUp.LoginSystem(self) )
+
+    def openMenu(self):
+        main.Main(self)
+        self.withdraw()
+
+    def openSignUp(self):
+        sign_up_window.LoginSystem(self)
+        self.withdraw()
 
 
 LoginWindow()
