@@ -1,6 +1,6 @@
 use mentalHealthTrackerDB;
 create table users (
-user_id int auto_increment primary key,
+user_id int auto_increment primary key not null,
 first_name varchar(50) not null,
 last_name varchar(50) not null,
 email varchar(70) not null,

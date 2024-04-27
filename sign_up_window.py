@@ -34,7 +34,6 @@ class LoginSystem:
 
     
     def sign_up_fields(self):
-        print("Here")
         '''function for showing creating new account fields'''
         global email_entry, email_label, password_entry, password_label
         self.email_label.place_forget()
@@ -75,7 +74,7 @@ class LoginSystem:
         '''Create account button'''
         self.create_account_button = Button(self.root, text="Create Account", command=self.sign_up_window)
         self.create_account_button.grid(columnspan=2, padx=10, pady=5)
-        self.create_account_button.place(x=350, y=400)
+        self.create_account_button.place(x=350, y=500)
         
         '''back to login button'''
         self.back_login_button = Button(self.root, text="Create Account", command=self.back_to_login)
@@ -83,6 +82,7 @@ class LoginSystem:
 
 
     def sign_up_window(self):
+        print("In sign_up_window")
         '''Function for creating a new account'''
         first_name = self.first_name_entry.get()
         last_name = self.last_name_entry.get()
@@ -90,7 +90,7 @@ class LoginSystem:
         password = self.password_entry.get()
 
         '''Connect to database'''
-        if self.user_db.add_user(self, first_name, last_name, email, password):
+        if self.user_db.add_user(first_name, last_name, email, password):
             self.message_label.config(text="Account created successfully")
         else:
             self.message_label.config(text="Email already exists")

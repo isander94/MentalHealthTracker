@@ -21,15 +21,23 @@ class DatabaseManager():
 
         '''Check if email and password match a record in the database'''
         cursor.execute("SELECT * FROM users WHERE email = %s AND password = %s ORDER BY email, password", (email, password))
-        user = cursor.fetchall()
+        users = cursor.fetchall()
+        for user in users:
+            if user[3] == email and user[4] == password:
+                print("Login successful")
+                print(f"{user[3]} {user[4]}")
+                cursor.close()
+                self.db_connection.close()
+                return True
+        return False
 
-
-        if user:
-            print("Login successful")
-            return True
-        else:
-            print("Invalid email or password")
-            return False
+       # if user:
+       #     print("Login successful")
+       #     print(user)
+       #     return True
+       # else:
+       #     print("Invalid email or password")
+       #     return False
 
 
     def add_user(self, first_name, last_name, email, password):
@@ -44,8 +52,8 @@ class DatabaseManager():
 
         
         ''' Check if email already exists in the database'''
-        cursor.execute("SELECT * FROM users WHERE email = %s;", (email))
-        existing_user = cursor.fetchone()
+        cursor.execute("SELECT * FROM users WHERE email = %s;", (email,))
+        existing_user = cursor.fetchall()
 
         if existing_user:
             print("Email already exists")
@@ -56,12 +64,12 @@ class DatabaseManager():
             '''Insert new user into the database'''
             print("Creating new account")
             sql_query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%s, %s, %s, %s);"
-            data = (self.first_name, self.last_name, self.email, self.password)
+            data = (self.first_name, self.last_name, self.email, self.password,)
             cursor.execute(sql_query, data)
 
             self.db_connection.commit()
             print("User created successfully")
             self.db_connection.close()
-            self.cursor.close()
+            cursor.close()
             return True
             
