@@ -34,6 +34,7 @@ class LoginSystem:
 
     
     def sign_up_fields(self):
+        print("Here")
         '''function for showing creating new account fields'''
         global email_entry, email_label, password_entry, password_label
         self.email_label.place_forget()
@@ -82,7 +83,6 @@ class LoginSystem:
 
 
     def sign_up_window(self):
-        print("Here")
         '''Function for creating a new account'''
         first_name = self.first_name_entry.get()
         last_name = self.last_name_entry.get()
@@ -148,7 +148,6 @@ root = Tk()
 root.geometry("900x900")
 root.title("Login")
 user_db = DatabaseManager()
-
 login_system = LoginSystem(root, user_db)
 #login_system = LoginSystem(root)
 

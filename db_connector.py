@@ -34,24 +34,28 @@ class DatabaseManager():
 
     def add_user(self, first_name, last_name, email, password):
         '''Function to handle user sign up'''
+        print("Here")
+        cursor = self.db_connection.cursor()
+
         self.first_name = first_name 
         self.last_name = last_name
         self.email = email
         self.password = password
 
-        cursor = self.db_connection.cursor()
-
+        
         ''' Check if email already exists in the database'''
-        cursor.execute("SELECT * FROM users WHERE email = %s", (email))
+        cursor.execute("SELECT * FROM users WHERE email = %s;", (email))
         existing_user = cursor.fetchone()
 
         if existing_user:
-            return False
             print("Email already exists")
+            self.db_connection.close()
+            cursor.close()
+            return False
         else:
             '''Insert new user into the database'''
             print("Creating new account")
-            sql_query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%s, %s, %s, %s)"
+            sql_query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%s, %s, %s, %s);"
             data = (self.first_name, self.last_name, self.email, self.password)
             cursor.execute(sql_query, data)
 
