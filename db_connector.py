@@ -27,7 +27,7 @@ class DatabaseManager():
                 print("Login successful")
                 print(f"{user[3]} {user[4]}")
                 cursor.close()
-                self.db_connection.close()
+                #self.db_connection.close()
                 return True
         return False
 
@@ -57,8 +57,8 @@ class DatabaseManager():
 
         if existing_user:
             print("Email already exists")
-            self.db_connection.close()
-            cursor.close()
+            cursor.close()            
+            #self.db_connection.close()
             return False
         else:
             '''Insert new user into the database'''
@@ -69,7 +69,7 @@ class DatabaseManager():
 
             self.db_connection.commit()
             print("User created successfully")
-            self.db_connection.close()
             cursor.close()
+            #self.db_connection.close()
             return True
             
