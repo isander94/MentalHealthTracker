@@ -16,7 +16,7 @@ class LoginSystem:
         self.user_db = user_db
         
 
-        self.create_login_ui()
+        self.sign_up_fields()
         
 
     def login(self):
@@ -36,11 +36,11 @@ class LoginSystem:
     def sign_up_fields(self):
         '''function for showing creating new account fields'''
         global email_entry, email_label, password_entry, password_label
-        self.email_label.place_forget()
-        self.email_entry.place_forget()
-        self.password_label.place_forget()
-        self.password_entry.place_forget()
-        self.login_button.place_forget()
+        #self.email_label.place_forget()
+        #self.email_entry.place_forget()
+        #self.password_label.place_forget()
+        #self.password_entry.place_forget()
+        #self.login_button.place_forget()
 
         '''Create labels and entry fields'''
         self.first_name_label = Label(self.root, text="First name: ")
