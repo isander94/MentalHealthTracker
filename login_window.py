@@ -58,7 +58,7 @@ class LoginWindow(Tk):
 
     
     def openSignUp(self):
-        sign_up_window.LoginSystem(self, self.user_db)
+        sign_up_window.LoginSystem(self)
         self.withdraw()
 
 
