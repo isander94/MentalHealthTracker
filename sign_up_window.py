@@ -66,7 +66,7 @@ class LoginSystem:
         self.email_entry.grid(padx=15, pady=5)
         self.email_entry.place(x=350, y=320)
 
-        self.password_label = Label(self.root, text="Password name: ")
+        self.password_label = Label(self.root, text="Password: ")
         self.password_label.grid(padx=15, pady=5)
         self.password_label.place(x=350, y=350)
         self.password_entry = Entry(self.root, show="*")
