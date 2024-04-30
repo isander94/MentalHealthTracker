@@ -36,6 +36,7 @@ class LoginSystem:
 
     
     def sign_up_fields(self):
+        print("In sign_up_fields")
         '''function for showing creating new account fields'''
         global email_entry, email_label, password_entry, password_label
         #self.email_label.place_forget()
@@ -146,12 +147,13 @@ class LoginSystem:
     #    self.create_login_ui()
 
 '''Creating the main window'''
-root = Tk()
-root.geometry("900x900")
-root.title("Login")
-user_db = DatabaseManager()
-login_system = LoginSystem(root, user_db)
-#login_system = LoginSystem(root)
+if __name__ == "__main__":            
+    root = Tk()
+    root.geometry("900x900")
+    root.title("Login")
+    user_db = DatabaseManager()
+    login_system = LoginSystem(root, user_db)
+    #login_system = LoginSystem(root)
 
 
 
