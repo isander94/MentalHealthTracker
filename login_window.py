@@ -1,28 +1,32 @@
 from tkinter import *
 from tkinter.ttk import *
 import main
-import sign_up_window
+from sign_up_window import LoginSystem
 from db_connector import DatabaseManager
 
 class LoginWindow():
-
     def __init__(self, root, user_db):
+        self.email_label = None
+        self.email_entry = None
+        self.password_label = None
+        self.password_entry = None
+        self.message_label = None
         self.root = root
         self.user_db = user_db
-        self.title("Log in")
-        self.geometry("900x900")
+        root.title("Log in")
+        root.geometry("900x900")
 
         self.window()
 
-        self.mainloop()
+        self.root.mainloop()
 
     def window(self):
-        usernameLabel = Label(self.root, text="Username")
-        usernameLabel.place(x=350, y=250)
+        emailLabel = Label(self.root, text="Email")
+        emailLabel.place(x=350, y=250)
 
-        userEntry = Entry(self.root)
-        userEntry.place(x=350,y=270)
-        username = userEntry.get()
+        emailEntry = Entry(self.root)
+        emailEntry.place(x=350,y=270)
+        email = emailEntry.get()
 
         passwordLabel = Label(self.root, text="Password")
         passwordLabel.place(x=350,y=300)
@@ -30,11 +34,13 @@ class LoginWindow():
         passwordEntry = Entry(self.root)
         passwordEntry.place(x=350, y=320)
         password = passwordEntry.get()
-
+        #user_db.user_credentials(email, password)
+         
         #login = main.Main.menu(root)
         #log = main
-        LoginButton = Button(self.root, text="Login", command=self.openMenu)
+        LoginButton = Button(self.root, text="Login", command=lambda: self.check_login_details(email, password))
         LoginButton.place(x=350, y=340)
+        
        # LoginButton.bind("<Button>", lambda e:log.Main(self))
 
         #signUp = sign_up_window
@@ -44,13 +50,27 @@ class LoginWindow():
 
     def openMenu(self):
         main.Main(self)
-        self.withdraw()
-
+        root.withdraw()
+    
+    def check_login_details(self, email, password):
+        if self.user_db.user_credentials(email, password):
+            self.openMenu()
+            root.withdraw()
+        else:
+            pass
+            
     def openSignUp(self):
         print("In openSignUp")
-        self.withdraw()
-        sign_up_window.LoginSystem(self.root, DatabaseManager())
+        login = LoginSystem(self.root, DatabaseManager())
+        login.sign_up_fields()
+        #self.withdraw()
+        
         print("Closing openSign")
 
-
-LoginWindow()
+# Initializing the tkinter module 
+root = Tk()
+# user_db gets access to all methods that connect to database
+# see db_connector.py for functions
+user_db = DatabaseManager()
+# Calling the constructor of the class (Running the program)
+LoginWindow(root, user_db)
