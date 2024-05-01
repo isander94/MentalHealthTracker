@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
+from daily_journal import DailyJournal
 
 class Main(Toplevel):
 
@@ -25,12 +26,6 @@ class Main(Toplevel):
         self.destroy()
         self.master.destroy()
 
-    def daily_journal(self):
-        journal_window = Toplevel(self)
-        journal_window.title("Daily Journal")
-        journal_window.geometry("900x900")
-
-        Label(journal_window, text="Daily journal text").pack(pady=10)
-
-        text_area = Text(journal_window, width=50, height=20)
-        text_area.pack(padx=10, pady=10)
+    def Daily_journal_window(self):
+        journal_window = DailyJournal(self)
+        journal_window.grab_set()
