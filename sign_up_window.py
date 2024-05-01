@@ -1,5 +1,6 @@
 '''GUI for sing up window'''
 from tkinter import *
+import re
 from db_connector import DatabaseManager
 class LoginSystem(Toplevel):
     def __init__(self, root = None): #add as a parameter user_db 
@@ -51,7 +52,7 @@ class LoginSystem(Toplevel):
         '''self.create_login_ui()'''
         goBack = Button(self, text="Create account", command=self.add_user)
         self.message_label = Label(self, text="", foreground="red")
-        self.message_label.place(x=350, y=370)
+        self.message_label.place(x=350, y=390)
         goBack.pack()
         quit = Button(self, text="quit program", command=self.on_close)
         quit.pack()
@@ -62,12 +63,20 @@ class LoginSystem(Toplevel):
         email = self.email_entry.get()
         password = self.password_entry.get()
         user_db = DatabaseManager()
-        
-        if user_db.add_user(first_name,last_name,email,password):
-            self.message_label.config(text="Account created successfully")
-            self.go_back()
+        reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&#])[A-Za-z\d@$!%?&#]{8,20}"
+        pattern = re.compile(reg)
+        match = re.search(pattern, password)
+        if match:
+            if user_db.add_user(first_name,last_name,email,password):
+                self.message_label.config(text="Account created successfully")
+                self.go_back()
+            else:
+                self.message_label.config(text="Unsuccessfull creation of account")
+            
         else:
-            self.message_label.config(text="Unsuccessfull creation of account")
+            self.message_label.config(text="""Password requirments: atleast 8 character, 1 big and small letter, special sign (@$!%?&#)""")
+        
+
             
     def go_back(self):
         self.destroy()
