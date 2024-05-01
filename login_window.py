@@ -25,7 +25,7 @@ class LoginWindow(Tk):
         passwordLabel = Label(self, text="Password")
         passwordLabel.place(x=350,y=300)
 
-        self.passwordEntry = Entry(self)
+        self.passwordEntry = Entry(self, show="*")
         self.passwordEntry.place(x=350, y=320)
         #login = main.Main.menu(root)
         #log = main
