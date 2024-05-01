@@ -5,7 +5,7 @@ class DatabaseManager():
         self.db_connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="team16",
+            password="isaacPa55w0rd!",
             database="mentalhealthtrackerdb"
         )
         self.first_name = None
