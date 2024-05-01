@@ -71,7 +71,7 @@ class LoginSystem(Toplevel):
                 self.message_label.config(text="Account created successfully")
                 self.go_back()
             else:
-                self.message_label.config(text="Unsuccessfull creation of account")
+                self.message_label.config(text="Email is already in use")
             
         else:
             self.message_label.config(text="""Password requirments: atleast 8 character, 1 big and small letter, special sign (@$!%?&#)""")
