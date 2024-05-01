@@ -64,19 +64,26 @@ class LoginSystem(Toplevel):
         password = self.password_entry.get()
         user_db = DatabaseManager()
         reg_password = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&#])[A-Za-z\d@$!%?&#]{8,20}"
-        reg_name = "(?=.*[a-z])(?=.*[A-Z])[A-Za-z]"
+        reg_name = "^(?=.*[a-z])[a-z]"
+        reg_email = "^(?=.*[a-z])(?=.*[@])[a-z@]"
+        pattern_email = re.compile(reg_email)
         pattern_name = re.compile(reg_name)
         pattern_password = re.compile(reg_password)
         match_password = re.search(pattern_password, password)
         match_first_name = re.search(pattern_name, first_name)
         match_last_name = re.search(pattern_name, last_name)
+        match_email = re.search(pattern_email, email)
+        
         if match_password:
             if match_first_name and match_last_name:    
-                if user_db.add_user(first_name,last_name,email,password):
-                    self.message_label.config(text="Account created successfully")
-                    self.go_back()
+                if match_email:    
+                    if user_db.add_user(first_name,last_name,email,password):
+                        self.message_label.config(text="Account created successfully")
+                        self.go_back()
+                    else:
+                        self.message_label.config(text="Email is already in use")
                 else:
-                    self.message_label.config(text="Email is already in use")
+                    self.message_label.config(text="Please input a valid email")
             else:
                 self.message_label.config(text="Empty input in first och last name")
         else:
