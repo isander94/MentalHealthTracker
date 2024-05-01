@@ -12,7 +12,7 @@ class Main(Toplevel):
         label = Label(self, text="Welcome to the menu\nWhat do you want to do today?")
         label.pack()
         
-        notes = Button(self, text="Daily journal", command=self.daily_journal)
+        notes = Button(self, text="Daily journal", command=self.Daily_journal_window)
         self.geometry("900x900")
         notes.pack()
 
