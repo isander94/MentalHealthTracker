@@ -62,6 +62,7 @@ class LoginSystem(Toplevel):
         email = self.email_entry.get()
         password = self.password_entry.get()
         user_db = DatabaseManager()
+        
         if user_db.add_user(first_name,last_name,email,password):
             self.message_label.config(text="Account created successfully")
             self.go_back()
