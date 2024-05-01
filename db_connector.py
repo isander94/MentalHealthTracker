@@ -21,7 +21,9 @@ class DatabaseManager():
 
         '''Check if email and password match a record in the database'''
         cursor.execute("SELECT * FROM users WHERE email = %s AND password = %s ORDER BY email, password", (email, password))
+        #cursor.execute("SELECT * FROM users")
         users = cursor.fetchall()
+        print(users)
         for user in users:
             if user[3] == email and user[4] == password:
                 print("Login successful")
