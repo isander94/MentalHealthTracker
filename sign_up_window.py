@@ -51,11 +51,11 @@ class LoginSystem(Toplevel):
 
         '''self.create_login_ui()'''
         goBack = Button(self, text="Create account", command=self.add_user)
+        goBack.place(x=350, y=410)
         self.message_label = Label(self, text="", foreground="red")
         self.message_label.place(x=350, y=390)
-        goBack.pack()
         quit = Button(self, text="quit program", command=self.on_close)
-        quit.pack()
+        quit.place(x=350, y=450)
     
     def add_user(self):
         first_name = self.first_name_entry.get()
@@ -63,16 +63,22 @@ class LoginSystem(Toplevel):
         email = self.email_entry.get()
         password = self.password_entry.get()
         user_db = DatabaseManager()
-        reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&#])[A-Za-z\d@$!%?&#]{8,20}"
-        pattern = re.compile(reg)
-        match = re.search(pattern, password)
-        if match:
-            if user_db.add_user(first_name,last_name,email,password):
-                self.message_label.config(text="Account created successfully")
-                self.go_back()
+        reg_password = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&#])[A-Za-z\d@$!%?&#]{8,20}"
+        reg_name = "(?=.*[a-z])(?=.*[A-Z])[A-Za-z]"
+        pattern_name = re.compile(reg_name)
+        pattern_password = re.compile(reg_password)
+        match_password = re.search(pattern_password, password)
+        match_first_name = re.search(pattern_name, first_name)
+        match_last_name = re.search(pattern_name, last_name)
+        if match_password:
+            if match_first_name and match_last_name:    
+                if user_db.add_user(first_name,last_name,email,password):
+                    self.message_label.config(text="Account created successfully")
+                    self.go_back()
+                else:
+                    self.message_label.config(text="Email is already in use")
             else:
-                self.message_label.config(text="Email is already in use")
-            
+                self.message_label.config(text="Empty input in first och last name")
         else:
             self.message_label.config(text="""Password requirments: atleast 8 character, 1 big and small letter, special sign (@$!%?&#)""")
         
