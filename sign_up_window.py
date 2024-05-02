@@ -65,7 +65,7 @@ class LoginSystem(Toplevel):
         user_db = DatabaseManager()
         reg_password = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&#])[A-Za-z\d@$!%?&#]{8,20}"
         reg_name = "^(?=.*[a-z])[a-z]"
-        reg_email = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[@])[a-zA-Z@]"
+        reg_email = "^(?=.*[@])[a-zA-Z@]"
         pattern_email = re.compile(reg_email)
         pattern_name = re.compile(reg_name)
         pattern_password = re.compile(reg_password)
