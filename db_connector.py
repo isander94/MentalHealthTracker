@@ -20,26 +20,28 @@ class DatabaseManager():
         cursor = self.db_connection.cursor()
 
         '''Check if email and password match a record in the database'''
-        cursor.execute("SELECT * FROM users WHERE email = %s AND password = %s ORDER BY email, password", (email, password))
+        cursor.execute("SELECT * FROM users WHERE email = %s AND password = %s ORDER BY email, password", (email, password,))
         #cursor.execute("SELECT * FROM users")
         users = cursor.fetchall()
         print(users)
-        for user in users:
-            if user[3] == email and user[4] == password:
-                print("Login successful")
-                print(f"{user[3]} {user[4]}")
-                cursor.close()
-                #self.db_connection.close()
-                return True
-        return False
+        #for user in users:
+        #    if user[3] == email and user[4] == password:
+        #        print("Login successful")
+        #        print(f"{user[3]} {user[4]}")
+        #        cursor.close()
+        #        #self.db_connection.close()
+        #        return True
+        #return False
 
-       # if user:
-       #     print("Login successful")
-       #     print(user)
-       #     return True
-       # else:
-       #     print("Invalid email or password")
-       #     return False
+        if users:
+            print("Login successful")
+            print(users)
+            cursor.close()
+            return True
+        else:
+           print("Invalid email or password")
+           cursor.close()
+           return False
 
 
     def add_user(self, first_name, last_name, email, password):
