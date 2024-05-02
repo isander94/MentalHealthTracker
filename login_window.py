@@ -17,14 +17,14 @@ class LoginWindow(Tk):
 
     def window(self):
         """Shows the buttons and input fields on the window"""
-        emailLabel = Label(self, text="email")  # email label
-        emailLabel.place(x=350, y=250)
+        self.emailLabel = Label(self, text="email")  # email label
+        self.emailLabel.place(x=350, y=250)
 
         self.emailEntry = Entry(self)  # input for email
         self.emailEntry.place(x=350,y=270)
 
-        passwordLabel = Label(self, text="Password")  # password label
-        passwordLabel.place(x=350,y=300)
+        self.passwordLabel = Label(self, text="Password")  # password label
+        self.passwordLabel.place(x=350,y=300)
 
         self.passwordEntry = Entry(self, show="*")  # input for password
         self.passwordEntry.place(x=350, y=320)
@@ -51,7 +51,8 @@ class LoginWindow(Tk):
         within the database"""
         email = self.emailEntry.get()
         password = self.passwordEntry.get()
-
+        print(f"{email}")
+        print(f"{password}")
         # Checks if the credentials exists and are correct
         # then displays message
         if self.user_db.user_credentials(email, password):
@@ -59,6 +60,8 @@ class LoginWindow(Tk):
             self.openMenu()
         else:
             self.message_label.config(text="Invalid email or password")
+            self.emailEntry.forget()
+            self.passwordEntry.forget()
 
 
     def openSignUp(self):
