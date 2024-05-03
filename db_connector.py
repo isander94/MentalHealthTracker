@@ -1,4 +1,5 @@
 import mysql.connector
+
 class DatabaseManager():
    """Handles user authentication and registration"""
 
