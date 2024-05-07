@@ -1,5 +1,9 @@
 import mysql.connector
+
 class DatabaseManager():
+   """Handles user authentication and registration"""
+
+    
     def __init__(self):
         '''Establishing a connection to the MySQL database'''
         self.db_connection = mysql.connector.connect(
