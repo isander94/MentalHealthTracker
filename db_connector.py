@@ -24,18 +24,8 @@ class DatabaseManager():
         sql_query = "SELECT * FROM users WHERE email = %s AND password = %s;"
         data = (self.email, self.password,)
         cursor.execute(sql_query, data)
-        #cursor.execute("SELECT * FROM users")
         users = cursor.fetchall()
         print(users)
-        #for user in users:
-        #    if user[3] == email and user[4] == password:
-        #        print("Login successful")
-        #        print(f"{user[3]} {user[4]}")
-        #        cursor.close()
-        #        #self.db_connection.close()
-        #        return True
-        #return False
-
         if users:
             print("Login successful")
             print(users)
@@ -65,7 +55,6 @@ class DatabaseManager():
         if existing_user:
             print("Email already exists")
             cursor.close()            
-            #self.db_connection.close()
             return False
         else:
             '''Insert new user into the database'''
@@ -77,6 +66,5 @@ class DatabaseManager():
             self.db_connection.commit()
             print("User created successfully")
             cursor.close()
-            #self.db_connection.close()
             return True
             
