@@ -60,8 +60,10 @@ class LoginWindow(Tk):
             self.openMenu()
         else:
             self.message_label.config(text="Invalid email or password")
-            self.emailEntry.forget()
-            self.passwordEntry.forget()
+            self.emailEntry.delete(0, 'end')
+            self.passwordEntry.delete(0, 'end')
+            #self.emailEntry.forget()
+            #self.passwordEntry.forget()
 
 
     def openSignUp(self):

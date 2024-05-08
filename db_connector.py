@@ -18,9 +18,12 @@ class DatabaseManager():
     def user_credentials(self, email, password):
         '''Function to handle user login'''
         cursor = self.db_connection.cursor()
-
+        self.email = email
+        self.password = password
         '''Check if email and password match a record in the database'''
-        cursor.execute("SELECT * FROM users WHERE email = %s AND password = %s ORDER BY email, password", (email, password,))
+        sql_query = "SELECT * FROM users WHERE email = %s AND password = %s;"
+        data = (self.email, self.password,)
+        cursor.execute(sql_query, data)
         #cursor.execute("SELECT * FROM users")
         users = cursor.fetchall()
         print(users)

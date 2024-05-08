@@ -20,6 +20,9 @@ class Main(Toplevel):
 
         quit = Button(self, text="quit program", command=self.on_close)
         quit.pack()
+        
+        log_out = Button(self, text="Log out", command=self.go_back)
+        log_out.pack()
 
     def on_close(self):
         self.destroy()
@@ -28,3 +31,9 @@ class Main(Toplevel):
     def Daily_journal_window(self):
         journal_window = DailyJournal(self)
         journal_window.grab_set()
+        self.withdraw()
+    
+    def go_back(self):
+        """Function is used to go back to the login window"""
+        self.destroy() # closes the sign up window
+        self.master.deiconify() #

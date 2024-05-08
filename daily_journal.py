@@ -41,6 +41,9 @@ class DailyJournal(Toplevel):
         #Quit button to exit the application
         quit_button = Button(self, text="quit", command=self.on_close)
         quit_button.pack(pady=5)
+        
+        go_back = Button(self, text="Go back", command=self.go_back)
+        go_back.pack(pady=5)
 
     def save():
         """function to save journal"""
@@ -51,3 +54,8 @@ class DailyJournal(Toplevel):
         """Close the application."""
         self.destroy()
         self.master.destroy()
+    
+    def go_back(self):
+        """Function is used to go back to the login window"""
+        self.destroy() # closes the sign up window
+        self.master.deiconify() #
