@@ -65,7 +65,7 @@ class LoginSystem(Toplevel):
         reg_name = "^[a-zA-Z]+$" # Creation of pattern that will be used to check that only big or small letters are used
         reg_email = "^(?=.*[@])[a-zA-Z@]" # Creation of pattern that will be used to check that @ is used and that big and small letters can be used 
         pattern_email = re.compile(reg_email) # Compiling the reg_email pattern into an object 
-        pattern_name = re.compile(reg_name  )# Compiling the reg_name pattern into an object
+        pattern_name = re.compile(reg_name)# Compiling the reg_name pattern into an object
         pattern_password = re.compile(reg_password) # Compiling the reg_password pattern into an object 
         match_password = re.search(pattern_password, password) # Searching for a match of the pattern pattern_password in the string password  
         match_first_name = re.search(pattern_name, first_name) # Searching for a match of the pattern pattern_name in the string first_name

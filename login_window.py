@@ -6,7 +6,7 @@ import db_connector
 class LoginWindow(Tk):
     """Initializes the login window"""
     def __init__(self):
-        super().__init__()
+        super().__init__() 
         self.title("Log in")
         self.geometry("900x900")  # size of window
         self.user_db = db_connector.DatabaseManager()
@@ -60,8 +60,10 @@ class LoginWindow(Tk):
             self.openMenu()
         else:
             self.message_label.config(text="Invalid email or password")
-            self.emailEntry.forget()
-            self.passwordEntry.forget()
+            self.emailEntry.delete(0, 'end')
+            self.passwordEntry.delete(0, 'end')
+            #self.emailEntry.forget()
+            #self.passwordEntry.forget()
 
 
     def openSignUp(self):
