@@ -67,4 +67,12 @@ class DatabaseManager():
             print("User created successfully")
             cursor.close()
             return True
+        
+    def delete_user(self, email):
+        """Delete a user row from the database"""
+        cursor = self.db_connection.cursor()
+        query = "DELETE FROM users WHERE email = %s;"
+        cursor.execute(query, (email,))
+        self.db_connection.commit()
+        cursor.close()
             
