@@ -38,4 +38,3 @@ class DailyJournal(customtkinter.CTk):
         # Placeholder function for saving the journal entry
         pass
 
-# Create and run the application window
