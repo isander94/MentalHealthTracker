@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
+from tkinter import messagebox
 import main
 import sign_up_window
 import db_connector
@@ -49,7 +50,8 @@ class LoginWindow(Tk):
     def check_login_info(self):
         """Checks if given email and password exists and is correct
         within the database"""
-        email = self.emailEntry.get()
+
+        """ email = self.emailEntry.get()
         password = self.passwordEntry.get()
         print(f"{email}")
         print(f"{password}")
@@ -60,9 +62,34 @@ class LoginWindow(Tk):
             self.openMenu()
         else:
             self.message_label.config(text="Invalid email or password")
-            self.emailEntry.forget()
-            self.passwordEntry.forget()
-
+            self.emailEntry.delete(0, END)
+            #self.emailEntry.destroy()
+            self.passwordEntry.delete(0, END)
+            #self.passwordEntry.destroy() """
+        while True:
+            email = self.emailEntry.get()
+            password = self.passwordEntry.get()
+            print(f"{email}")
+            print(f"{password}")
+        
+            # Check if the credentials are correct
+            if self.user_db.user_credentials(email, password):
+                self.message_label.config(text="Login successful")
+                self.openMenu()
+                break  # Exit the loop if login is successful
+            else:
+                self.message_label.config(text="Invalid email or password")
+                # Clear the email and password entries
+                self.emailEntry.delete(0, END)
+                self.passwordEntry.delete(0, END)
+            
+            # Ask the user if they want to create a new account or retry login
+                response = messagebox.askyesno("Create Account", "Invalid credentials. Do you want to create a new account?")
+                if response:
+                    self.openSignUp()  # Open the sign-up window
+                    break  # Exit the loop to allow the user to create an account
+                else:
+                    continue  # Continue the loop for another login attempt
 
     def openSignUp(self):
         """Function that opens up the create account window,
