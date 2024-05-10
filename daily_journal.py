@@ -35,19 +35,29 @@ class DailyJournal(Toplevel):
         self.text_area.pack(padx=10, pady=10)
         
         #Button to save the journal
-        save_button = Button(self, text="Save") #,command=self.save)
+        save_button = Button(self, text="Save", command=self.save) #,command=self.save)
         save_button.pack(pady=10)
         
         #Quit button to exit the application
         quit_button = Button(self, text="quit", command=self.on_close)
         quit_button.pack(pady=5)
+        
+        go_back = Button(self, text="Go back", command=self.go_back)
+        go_back.pack(pady=5)
 
-    def save():
+    def save(self):
         """function to save journal"""
-        pass
+        text = self.text_area.get("1.0", "end-1c")
+        with open("note.txt", "w") as file:
+            file.write(str(text))
 
 
     def on_close(self):
         """Close the application."""
         self.destroy()
         self.master.destroy()
+    
+    def go_back(self):
+        """Function is used to go back to the login window"""
+        self.destroy() # closes the sign up window
+        self.master.deiconify() #
