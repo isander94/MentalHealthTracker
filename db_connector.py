@@ -1,13 +1,6 @@
 import mysql.connector
 from datetime import datetime
-from datetime import datetime
 class DatabaseManager():
-    first_name = None
-    last_name = None
-    email = None
-    password = None
-    user_id = None
-        
     first_name = None
     last_name = None
     email = None
@@ -28,7 +21,6 @@ class DatabaseManager():
     def user_credentials(self, email, password):
         '''Function to handle user login'''
         cursor = self.db_connection.cursor()
-        DatabaseManager.email = email
         DatabaseManager.email = email
         self.password = password
         '''Check if email and password match a record in the database'''
@@ -58,9 +50,7 @@ class DatabaseManager():
         self.email = email
         self.password = password
 
-        
         ''' Check if email already exists in the database'''
-        cursor.execute("SELECT * FROM users WHERE email = %s;", (self.email,))
         cursor.execute("SELECT * FROM users WHERE email = %s;", (self.email,))
         existing_user = cursor.fetchall()
 
@@ -90,7 +80,6 @@ class DatabaseManager():
             
     def add_note(self, note):
         cursor = self.db_connection.cursor()
-        
         query1 = "SELECT user_id FROM users WHERE email = %s;"
         data1 = (self.email,)
         print(DatabaseManager.email)
