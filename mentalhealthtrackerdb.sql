@@ -1,4 +1,5 @@
 use mentalHealthTrackerdb;
+use mentalHealthTrackerdb;
 create table users (
 user_id int auto_increment primary key not null,
 first_name varchar(50) not null,
