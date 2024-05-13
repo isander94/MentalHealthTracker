@@ -53,7 +53,7 @@ class DailyJournal(Toplevel):
     def save(self):
         """function to save journal"""
         text = self.text_area.get("1.0", "end-1c")
-        if self.user_db.add_note(text):
+        if self.user_db.add_note(text, self.user_db.email):
             self.message_label.config(text="Note saved successfully")
         else:
             self.message_label.config(text="An error occured")

@@ -78,10 +78,10 @@ class DatabaseManager():
         self.db_connection.commit()
         cursor.close()
             
-    def add_note(self, note):
+    def add_note(self, note, email):
         cursor = self.db_connection.cursor()
         query1 = "SELECT user_id FROM users WHERE email = %s;"
-        data1 = (self.email,)
+        data1 = (email,)
         print(DatabaseManager.email)
         cursor.execute(query1, data1)
         user_id = cursor.fetchone()
