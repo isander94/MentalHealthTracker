@@ -1,5 +1,5 @@
 import unittest
-import db_connector
+
 from db_connector import DatabaseManager
 
 
@@ -61,6 +61,18 @@ class TestDatabase(unittest.TestCase):
         self.my_connection.delete_user(email)
         # # Try to log in again (should not work)
         result = self.my_connection.user_credentials(email, password)
+        self.assertFalse(result)
+
+    def test_add_note(self):
+        """Try to add a note to the database"""
+        note = "This is a test note"
+        result = self.my_connection.add_note(note, "nils@mail.com")
+        self.assertTrue(result)
+
+    def test_add_note_invalid_account(self):
+        """Try to add a note to the database with an account that is invalid"""
+        note = "This is a test note"
+        result = self.my_connection.add_note(note, "doesnotexist@mail.com")
         self.assertFalse(result)
 
 if __name__ == "__main__":
