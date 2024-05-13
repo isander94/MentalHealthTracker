@@ -8,10 +8,10 @@ class DatabaseManager():
             password="Sahra123",
             database="mentalhealthtrackerdb"
         )
-        self.first_name = None
-        self.last_name = None
-        self.email = None
-        self.password = None
+        #self.first_name = None
+        #self.last_name = None
+        #self.email = None
+        #self.password = None
         
 
 

@@ -10,7 +10,7 @@ class LoginWindow(Tk):
         super().__init__() 
         self.title("Log in")
         self.geometry("900x900")  # size of window
-        self.user_db = db_connector.DatabaseManager()
+        #self.user_db = db_connector.DatabaseManager()
         self.message_label = None
         self.window()
 
@@ -45,34 +45,40 @@ class LoginWindow(Tk):
         """Function when succesfully loging in, goes to menu and closes
         login window"""
         main.Main(self)  # opens menu
+        self.clear_message()
         self.withdraw()  # closes login window
 
     def check_login_info(self):
         """Checks if given email and password exists and is correct
         within the database"""
 
-        """ email = self.emailEntry.get()
+        email = self.emailEntry.get()
         password = self.passwordEntry.get()
+        user_db = db_connector.DatabaseManager()
         print(f"{email}")
         print(f"{password}")
         # Checks if the credentials exists and are correct
         # then displays message
-        if self.user_db.user_credentials(email, password):
+        if user_db.user_credentials(email, password):
             self.message_label.config(text="Login successful")
             self.openMenu()
+            self.emailEntry.delete(0, 'end')
+            self.passwordEntry.delete(0, 'end')
         else:
             self.message_label.config(text="Invalid email or password")
             self.emailEntry.delete(0, 'end')
             self.passwordEntry.delete(0, 'end')
-            #self.emailEntry.forget()
-            #self.passwordEntry.forget()
 
 
     def openSignUp(self):
         """Function that opens up the create account window,
         and login window closes"""
         sign_up_window.LoginSystem(self)  # opens create account window
+        self.clear_message()
         self.withdraw()  # closes login window
-
+    
+    def clear_message(self):
+        """Functionf for clear text on the screen"""
+        self.message_label.config(text="")
 
 LoginWindow()
