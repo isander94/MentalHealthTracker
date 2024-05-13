@@ -64,7 +64,7 @@ class DailyJournal(Toplevel):
         self.master.destroy()
     
     def previous_notes(self):
-        previous_notes = self.user_db.previous_notes()
+        previous_notes = self.user_db.previous_notes(self.user_db.email)
         
     def go_back(self):
         """Function is used to go back to the login window"""
