@@ -113,4 +113,4 @@ class DatabaseManager():
             self.db_connection.commit()
             return previous_notes
         else:
-            print("Error")
+            return False
