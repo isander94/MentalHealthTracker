@@ -75,5 +75,14 @@ class TestDatabase(unittest.TestCase):
         result = self.my_connection.add_note(note, "doesnotexist@mail.com")
         self.assertFalse(result)
 
+    def test_get_note(self):
+        """Try to fetch a note associated with a user"""
+        email = "nils@mail.com"
+        expected_note = "This is a test note"
+        result = self.my_connection.previous_notes(email)
+        note = result[0][0]
+        self.assertEqual(expected_note, note)
+
+
 if __name__ == "__main__":
     unittest.main()
