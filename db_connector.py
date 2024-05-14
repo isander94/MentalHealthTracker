@@ -12,7 +12,7 @@ class DatabaseManager():
         self.db_connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="team16",
+            password="isaacPa55w0rd!",
             database="mentalhealthtrackerdb"
         )
         
@@ -111,6 +111,8 @@ class DatabaseManager():
             print(cursor.fetchall())
             previous_notes = cursor.fetchall()
             self.db_connection.commit()
+            cursor.close()
             return previous_notes
         else:
+            cursor.close()
             return False
