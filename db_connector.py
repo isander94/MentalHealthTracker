@@ -108,8 +108,8 @@ class DatabaseManager():
             data = (user_id[0],)
             
             cursor.execute(query, data)
-            print(cursor.fetchall())
             previous_notes = cursor.fetchall()
+            print(cursor.fetchall())
             self.db_connection.commit()
             cursor.close()
             return previous_notes
