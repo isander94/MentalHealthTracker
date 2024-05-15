@@ -1,12 +1,15 @@
+'''Module for database connection'''
 import mysql.connector
 from datetime import datetime
+
+
 class DatabaseManager():
     first_name = None
     last_name = None
     email = None
     password = None
     user_id = None
-        
+
     def __init__(self):
         '''Establishing a connection to the MySQL database'''
         self.db_connection = mysql.connector.connect(
@@ -15,8 +18,6 @@ class DatabaseManager():
             password="isaacPa55w0rd!",
             database="mentalhealthtrackerdb"
         )
-        
-
 
     def user_credentials(self, email, password):
         '''Function to handle user login'''
@@ -40,12 +41,11 @@ class DatabaseManager():
            cursor.close()
            return False
 
-
     def add_user(self, first_name, last_name, email, password):
         '''Function to handle user sign up'''
         cursor = self.db_connection.cursor()
 
-        self.first_name = first_name 
+        self.first_name = first_name
         self.last_name = last_name
         self.email = email
         self.password = password
@@ -56,7 +56,7 @@ class DatabaseManager():
 
         if existing_user:
             print("Email already exists")
-            cursor.close()            
+            cursor.close()
             return False
         else:
             '''Insert new user into the database'''
@@ -69,7 +69,7 @@ class DatabaseManager():
             print("User created successfully")
             cursor.close()
             return True
-        
+
     def delete_user(self, email):
         """Delete a user row from the database"""
         cursor = self.db_connection.cursor()
@@ -77,7 +77,7 @@ class DatabaseManager():
         cursor.execute(query, (email,))
         self.db_connection.commit()
         cursor.close()
-            
+
     def add_note(self, note, email):
         cursor = self.db_connection.cursor()
         query1 = "SELECT user_id FROM users WHERE email = %s;"
@@ -85,7 +85,7 @@ class DatabaseManager():
         print(DatabaseManager.email)
         cursor.execute(query1, data1)
         user_id = cursor.fetchone()
-        if user_id:    
+        if user_id:
             query2 = "INSERT INTO notes (note, user_id, date_now) VALUES (%s, %s, %s);"
             data2 = (note, user_id[0], datetime.now())
             cursor.execute(query2, data2)
@@ -96,17 +96,17 @@ class DatabaseManager():
             print("User not found")
             cursor.close()
             return False
-    
+
     def previous_notes(self, email):
         cursor = self.db_connection.cursor()
         query1 = "SELECT user_id FROM users WHERE email = %s;"
         data1 = (email,)
         cursor.execute(query1, data1)
         user_id = cursor.fetchone()
-        if user_id:        
+        if user_id:
             query = "SELECT note from notes where user_id = %s"
             data = (user_id[0],)
-            
+
             cursor.execute(query, data)
             previous_notes = cursor.fetchall()
             print(cursor.fetchall())
