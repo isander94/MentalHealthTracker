@@ -26,9 +26,9 @@ The Mental Health Tracker App is designed to support individuals in tracking the
 ## License
 This project is licensed under the MIT License.
 
-# Authers
-- Isaac
-- Leon
-- Mohamed
-- Mohammad
-- Oscar
+# Authors
+- Isaac Andersson
+- Leon Kardum
+- Mohamed Abdi Farah
+- Mohammed-Nur Nur
+- Oscar Wall
