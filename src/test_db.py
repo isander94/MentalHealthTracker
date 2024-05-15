@@ -1,5 +1,5 @@
 import unittest
-
+from datetime import datetime
 from db_connector import DatabaseManager
 
 
@@ -78,9 +78,9 @@ class TestDatabase(unittest.TestCase):
     def test_get_note(self):
         """Try to fetch a note associated with a user"""
         email = "nils@mail.com"
-        expected_note = "This is a test note"
+        expected_note = "This is a test note 2024-05-13"
         result = self.my_connection.previous_notes(email)
-        note = result[0][0]
+        note = result[0][0] + " " + result[0][1].strftime("%Y-%m-%d")
         self.assertEqual(expected_note, note)
 
 
