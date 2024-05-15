@@ -29,3 +29,4 @@ SELECT note and date_now from notes where user_id = 4;
 drop table notes;
 insert into notes (note, user_id) values ("HIHI", 2),
 										 ("NAAA", 3);
+SELECT note, date_now from notes where user_id = 4;

@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter.ttk import *
 from db_connector import DatabaseManager
+from datetime import datetime
 
 class Previous_notes(Toplevel):
     def __init__(self, parent):
@@ -8,7 +9,7 @@ class Previous_notes(Toplevel):
         self.title("Daily Journal")
         self.geometry("900x900")
         self.notes_label = None
-        self.notes_label = Label(self, text="", foreground="red")
+        self.notes_label = Label(self, text="", foreground="green")
         self.notes_label.place(x=350, y=340)
         self.user_db = DatabaseManager()
         go_back = Button(self, text="Go back", command=self.go_back)
@@ -20,9 +21,8 @@ class Previous_notes(Toplevel):
         all_previous_notes = self.user_db.previous_notes(email)
         notes_text = ""
         for previous_note in all_previous_notes:
-            print(previous_note[0])
-            notes_text += previous_note[0] + "\n"
-        
+            date_string = previous_note[1].strftime("%Y-%m-%d")
+            notes_text += date_string + "\t" + previous_note[0] + "\n"
         self.notes_label.config(text=notes_text)
         
     def go_back(self):

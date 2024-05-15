@@ -104,7 +104,8 @@ class DatabaseManager():
         cursor.execute(query1, data1)
         user_id = cursor.fetchone()
         if user_id:
-            query = "SELECT note from notes where user_id = %s"
+            query = "SELECT note, date_now from notes where user_id = %s"
+            
             data = (user_id[0],)
 
             cursor.execute(query, data)
