@@ -1,5 +1,8 @@
+'''Module for database connection'''
 import mysql.connector
 from datetime import datetime
+
+
 class DatabaseManager():
     first_name = None
     last_name = None
@@ -15,8 +18,6 @@ class DatabaseManager():
             password="isaacPa55w0rd!",
             database="mentalhealthtrackerdb"
         )
-
-
 
     def user_credentials(self, email, password):
         '''Function to handle user login'''
@@ -39,7 +40,6 @@ class DatabaseManager():
            print("Invalid email or password")
            cursor.close()
            return False
-
 
     def add_user(self, first_name, last_name, email, password):
         '''Function to handle user sign up'''
@@ -115,8 +115,4 @@ class DatabaseManager():
             return previous_notes
         else:
             cursor.close()
-<<<<<<< HEAD
             return False
-=======
-            return False
->>>>>>> cd14645 (updated README.md)
