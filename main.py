@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter.ttk import *
 from daily_journal import DailyJournal
+from previous_notes import Previous_notes
 class Main(Toplevel):
 
     def __init__(self, root = None):
@@ -17,7 +18,10 @@ class Main(Toplevel):
 
         stats = Button(self, text="This weeks statistics")
         stats.pack()
-
+        
+        previous_notes = Button(self, text="Previous notes", command=self.Previous_notes_window)
+        previous_notes.pack()
+        
         quit = Button(self, text="quit program", command=self.on_close)
         quit.pack()
         
@@ -32,6 +36,12 @@ class Main(Toplevel):
         journal_window = DailyJournal(self)
         journal_window.grab_set()
         self.withdraw()
+    
+    def Previous_notes_window(self):
+        previous_notes = Previous_notes(self)
+        previous_notes.grab_set()
+        self.withdraw()
+
     
     def go_back(self):
         """Function is used to go back to the login window"""
