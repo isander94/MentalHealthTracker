@@ -5,7 +5,7 @@ from db_connector import DatabaseManager
 
 class TestDatabase(unittest.TestCase):
     """Class for testing database functionality"""
-    
+
     def setUp(self):
         """Set up a connection before tests"""
         self.my_connection = DatabaseManager()

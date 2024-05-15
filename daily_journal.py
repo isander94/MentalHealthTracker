@@ -19,11 +19,11 @@ class DailyJournal(Toplevel):
         self.message_label = None
         self.message_label = Label(self, text="", foreground="red")
         self.message_label.pack()
-        
+
         # Frame and alignment for "Mood buttons"
         mood_frame = Frame(self)
         mood_frame.pack(pady=10)
-        
+
         # Mood rating buttons
         self.mood_buttons = []
         for i in range(1, 11):
@@ -33,11 +33,11 @@ class DailyJournal(Toplevel):
 
          # Label for journal entry section
         Label(self, text="Daily journal text").pack(pady=10)
-        
+
         # Label for writing area
         self.text_area = Text(self, width=50, height=20)
         self.text_area.pack(padx=10, pady=10)
-        
+
         #Button to save the journal
         save_button = Button(self, text="Save", command=self.save) #,command=self.save)
         save_button.pack(pady=10)
@@ -46,7 +46,7 @@ class DailyJournal(Toplevel):
         #Quit button to exit the application
         quit_button = Button(self, text="quit", command=self.on_close)
         quit_button.pack(pady=5)
-        
+
         go_back = Button(self, text="Go back", command=self.go_back)
         go_back.pack(pady=5)
 
@@ -57,15 +57,15 @@ class DailyJournal(Toplevel):
             self.message_label.config(text="Note saved successfully")
         else:
             self.message_label.config(text="An error occured")
-            
+
     def on_close(self):
         """Close the application."""
         self.destroy()
         self.master.destroy()
-    
+
     def previous_notes(self):
         previous_notes = self.user_db.previous_notes(self.user_db.email)
-        
+
     def go_back(self):
         """Function is used to go back to the login window"""
         self.destroy() # closes the sign up window
