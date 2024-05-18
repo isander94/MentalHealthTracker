@@ -78,7 +78,7 @@ class DailyJournal(Toplevel):
         try:
             if isinstance(mood, str):
                 mood_rating_int = int(mood)
-            if isinstance(mood_rating_int, int) and 1 <= mood_rating_int <= 10:
+            if 1 <= mood_rating_int <= 10:
                 if self.user_db.save_mood_rating(self.user_db.email, mood_rating_int):
                     self.message_label.config(text="Mood saved successfully")
                 else:
