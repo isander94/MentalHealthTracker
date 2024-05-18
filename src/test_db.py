@@ -10,6 +10,9 @@ class TestDatabase(unittest.TestCase):
         """Set up a connection before tests"""
         self.my_connection = DatabaseManager()
 
+    def tearDown(self):
+        self.my_connection.close_connection()
+
     def test_instance(self):
         """Test the constructor"""
         self.assertIsInstance(self.my_connection, DatabaseManager)
