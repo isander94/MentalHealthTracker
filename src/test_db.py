@@ -11,6 +11,7 @@ class TestDatabase(unittest.TestCase):
         self.my_connection = DatabaseManager()
 
     def tearDown(self):
+        """Teardown method for closing connection"""
         self.my_connection.close_connection()
 
     def test_instance(self):
