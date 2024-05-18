@@ -7,7 +7,7 @@ from db_connector import DatabaseManager
 def rgb_to_hex(rgb):
     """Convert RGB color to HEX format"""
     return "#{:02x}{:02x}{:02x}".format(*rgb)
-    
+
 class LoginSystem(Toplevel):
     """LoginSystem used to create and handle the signup window"""
     def __init__(self, root = None): #add as a parameter user_db 
@@ -23,7 +23,7 @@ class LoginSystem(Toplevel):
         self.first_name_label.place(x=350, y=200) # Placement of text
         self.first_name_entry = Entry(self) # Creation of the input box
         self.first_name_entry.grid(padx=10, pady=5) # Padding for the input box vertically and horizontally
-        self.first_name_entry.place(x=350, y=230) # Placement of input box
+        self.first_name_entry.place(x=350, y=220) # Placement of input box
 
         self.last_name_label = Label(self, text="Last name: ") # Text for the last name entry
         self.last_name_label.grid(padx=10, pady=5) # Amount of padding vertically and horizontally
@@ -49,14 +49,14 @@ class LoginSystem(Toplevel):
         '''self.create_login_ui()'''
         # Creation of button with text "Create account" that will execute add_user() 
         goBack = Button(self, text="Create account", command=self.add_user)
-        goBack.place(x=350, y=410) # Placement of button
+        goBack.place(x=350, y=420) # Placement of button
         bg_color = rgb_to_hex((135, 190, 128))
         self.message_label = Label(self, text="", foreground="red", background=bg_color) # Creation of the error message
         self.message_label.place(x=350, y=390) # Placement of error message
         
         # Creation of button with text "quit program" that will execute on_close() 
         quit = Button(self, text="quit program", command=self.on_close)
-        quit.place(x=350, y=450) # Placement of button
+        quit.place(x=350, y=470) # Placement of button
     
     def add_user(self):
         """Function is used to add a user to the database if certain values return True"""
