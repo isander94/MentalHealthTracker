@@ -19,7 +19,7 @@ class Main(Toplevel):
         self.geometry("900x900")
         self.user_db = DatabaseManager()
         self.message_label = None
-        self.message_label = Label(self, text="", foreground="red", background=bg_color)
+        self.message_label = Label(self, text="", foreground="red")
         self.message_label.pack
         bg_color = rgb_to_hex((135, 190, 128))
         self.configure(background=bg_color)
@@ -57,38 +57,25 @@ class Main(Toplevel):
         self.withdraw()
 
     def Statistic_window(self):
-        # statistic = Statistic(self)
-        # statistic.grab_set()
-        # self.withdraw()
-        
-            # Fetch notes and moods
+        # Fetch notes and moods
         moods = self.user_db.get_mood(self.user_db.email)
         if len(moods) >= 7:
-            print("Contents 1:")
-            print(moods)
-            
-                # Create lists where dates and lists will be stored
+            # Create lists where dates and lists will be stored
             dates_list = []
             moods_list = []
-                # Extract the moods and dates from tuples and place in a list
+            # Extract the moods and dates from tuples and place in a list
             for x in range(len(moods)):
                 moods_list.append(moods[x][0])
                 dates_list.append(moods[x][1])
 
             for x in range (len(dates_list)):
-                
                 date_string = dates_list[x].strftime("%m-%d")
                 dates_list[x] = date_string
-
-            print("Data added to lists")
-            print("Contents:")
-            print(dates_list)
-            print(moods_list)
-
-                # Take the last 7 dates and moods
+                
+            # Take the last 7 dates and moods
             dates_list = dates_list[-7:]
             moods_list = moods_list[-7:]
-            print("Last 7 extracted")
+            
 
             pyplot.title("Mood statistics over 7 days")
             pyplot.xlabel("Date")
