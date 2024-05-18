@@ -65,9 +65,6 @@ class LoginWindow(Tk):
             self.message_label.config(text="Invalid email or password")
             self.emailEntry.delete(0, 'end')
             self.passwordEntry.delete(0, 'end')
-            #self.emailEntry.forget()
-            #self.passwordEntry.forget()
-
 
     def openSignUp(self):
         """Function that opens up the create account window,
