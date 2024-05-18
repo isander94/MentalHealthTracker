@@ -15,7 +15,7 @@ class DatabaseManager():
         self.db_connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Sahra123",
+            password="team16",
             database="mentalhealthtrackerdb"
         )
 
@@ -144,7 +144,7 @@ class DatabaseManager():
         cursor.execute(query1, data1)
         user_id = cursor.fetchone()
         if user_id:
-            query2 = "SELECT mood_rating FROM mood_ratings WHERE user_id = %s;"
+            query2 = "SELECT mood_rating, date_now FROM mood_ratings WHERE user_id = %s;"
             data2 = (user_id[0],)
             cursor.execute(query2, data2)
             all_moods = cursor.fetchall()
