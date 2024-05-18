@@ -125,7 +125,7 @@ class DatabaseManager():
         cursor.execute(query1, data1)
         user_id = cursor.fetchone()
         if user_id:
-            query2 = "INSERT INTO mood_rating (mood_rating, user_id, date_now) VALUES (%s, %s, %s);"
+            query2 = "INSERT INTO mood_ratings (mood_rating, user_id, date_now) VALUES (%s, %s, %s);"
             data2 = (mood_rating, user_id[0], datetime.now())
             cursor.execute(query2, data2)
             self.db_connection.commit()
