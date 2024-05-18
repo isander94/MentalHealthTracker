@@ -5,6 +5,7 @@ from previous_notes import Previous_notes
 from statistic import Statistic
 from db_connector import DatabaseManager
 import matplotlib.pyplot as pyplot
+from datetime import datetime
 
 def rgb_to_hex(rgb):
     """Convert RGB color to HEX format"""
@@ -59,28 +60,40 @@ class Main(Toplevel):
         
             # Fetch notes and moods
         moods = self.user_db.get_mood(self.user_db.email)
-        print("Contents 1:")
-        print(moods)
-        
-            # Create lists where dates and lists will be stored
-        dates_list = []
-        moods_list = []
-            # Extract the moods and dates from tuples and place in a list
-        for x in range(len(moods)):
-            dates_list.append(moods[x][3])
-            moods_list.append(moods[x][1])
-        print("Data added to lists")
-        print("Contents:")
-        print(dates_list)
-        print(moods_list)
+        if len(moods) >= 7:
+            print("Contents 1:")
+            print(moods)
+            
+                # Create lists where dates and lists will be stored
+            dates_list = []
+            moods_list = []
+                # Extract the moods and dates from tuples and place in a list
+            for x in range(len(moods)):
+                moods_list.append(moods[x][0])
+                dates_list.append(moods[x][1])
 
-            # Take the last 7 dates and moods
-        dates_list = dates_list[-7:]
-        moods_list = dates_list[-7:]
-        print("Last 7 extracted")
+            for x in range (len(dates_list)):
+                
+                date_string = dates_list[x].strftime("%m-%d")
+                dates_list[x] = date_string
 
-        pyplot.plot(dates_list, moods_list)
-        pyplot.show()
+            print("Data added to lists")
+            print("Contents:")
+            print(dates_list)
+            print(moods_list)
+
+                # Take the last 7 dates and moods
+            dates_list = dates_list[-7:]
+            moods_list = moods_list[-7:]
+            print("Last 7 extracted")
+
+            pyplot.title("Mood statistics over 7 days")
+            pyplot.xlabel("Date")
+            pyplot.ylabel("Mood")
+            pyplot.plot(dates_list, moods_list)
+            pyplot.show()
+        else:
+            pass
 
 
 
