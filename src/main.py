@@ -20,7 +20,7 @@ class Main(Toplevel):
         self.user_db = DatabaseManager()
         self.message_label = None
         self.message_label = Label(self, text="", foreground="red")
-        self.message_label.pack
+        self.message_label.pack()
         bg_color = rgb_to_hex((135, 190, 128))
         self.configure(background=bg_color)
         label = Label(self, text="Welcome to the menu\nWhat do you want to do today?")
