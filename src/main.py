@@ -19,9 +19,9 @@ class Main(Toplevel):
         self.geometry("900x900")
         self.user_db = DatabaseManager()
         self.message_label = None
-        self.message_label = Label(self, text="", foreground="red")
-        self.message_label.pack()
         bg_color = rgb_to_hex((135, 190, 128))
+        self.message_label = Label(self, text="", foreground="red", background=bg_color)
+        self.message_label.pack()
         self.configure(background=bg_color)
         label = Label(self, text="Welcome to the menu\nWhat do you want to do today?")
         label.pack()
@@ -36,7 +36,7 @@ class Main(Toplevel):
         previous_notes = Button(self, text="Previous notes", command=self.Previous_notes_window)
         previous_notes.pack()
         
-        quit = Button(self, text="quit program", command=self.on_close)
+        quit = Button(self, text="Quit program", command=self.on_close)
         quit.pack()
         
         log_out = Button(self, text="Log out", command=self.go_back)
