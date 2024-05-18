@@ -1,5 +1,4 @@
 use mentalHealthTrackerdb;
-use mentalHealthTrackerdb;
 create table users (
 user_id int auto_increment primary key not null,
 first_name varchar(50) not null,
@@ -30,3 +29,12 @@ drop table notes;
 insert into notes (note, user_id) values ("HIHI", 2),
 										 ("NAAA", 3);
 SELECT note, date_now from notes where user_id = 4;
+
+create table mood_ratings (
+mood_rating_id int auto_increment primary key not null,
+mood_rating int not null,
+user_id int,
+date_now datetime default current_timestamp,
+foreign key (user_id) references users(user_id)
+);
+select * from mood_rating;
