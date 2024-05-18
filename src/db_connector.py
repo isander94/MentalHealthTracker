@@ -136,3 +136,21 @@ class DatabaseManager():
             cursor.close()
             return False
 
+    
+    def get_mood(self, email):
+        cursor = self.db_connection.cursor()
+        query1 = "SELECT user_id FROM users WHERE email = %s;"
+        data1 = (email,)
+        cursor.execute(query1, data1)
+        user_id = cursor.fetchone()
+        if user_id:
+            query2 = "SELECT mood_rating FROM mood_ratings WHERE user_id = %s;"
+            data2 = (user_id[0],)
+            cursor.execute(query2, data2)
+            all_moods = cursor.fetchall()
+            self.db_connection.commit()
+            cursor.close()
+            return all_moods
+        else:
+            return False
+            

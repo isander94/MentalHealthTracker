@@ -60,10 +60,14 @@ class DailyJournal(Toplevel):
     def save_note(self):
         """function to save journal"""
         text = self.text_area.get("1.0", "end-1c")
-        if self.user_db.add_note(text, self.user_db.email):
-            self.message_label.config(text="Note saved successfully")
-        else:
-            self.message_label.config(text="An error occured")
+        print(len(text))
+        if (0 == len(text)) or (len(text) > 100):
+            self.message_label.config(text="Please enter a note bellow or equal to 100 characters")
+        else:    
+            if self.user_db.add_note(text, self.user_db.email):
+                self.message_label.config(text="Note saved successfully")
+            else:
+                self.message_label.config(text="An error occured")
 
     def on_close(self):
         """Close the application."""
@@ -75,17 +79,20 @@ class DailyJournal(Toplevel):
 
     def save_mood(self):
         mood = self.mood_text_area.get("1.0", "end-1c")
-        try:
-            if isinstance(mood, str):
-                mood_rating_int = int(mood)
-            if 1 <= mood_rating_int <= 10:
-                if self.user_db.save_mood_rating(self.user_db.email, mood_rating_int):
-                    self.message_label.config(text="Mood saved successfully")
-                else:
-                    self.message_label.config(text="An error has occurred")
-        except:
-            self.message_label.config(text="Please input a valid number from 1-10")
-        
+        if len(mood) == 0:
+            self.message_label.config(text="Please input how you feel from 1-10")
+        else:    
+            try:
+                if isinstance(mood, str):
+                    mood_rating_int = int(mood)
+                if 1 <= mood_rating_int <= 10:
+                    if self.user_db.save_mood_rating(self.user_db.email, mood_rating_int):
+                        self.message_label.config(text="Mood saved successfully")
+                    else:
+                        self.message_label.config(text="An error has occurred")
+            except:
+                self.message_label.config(text="Please input a valid number from 1-10")
+            
     def go_back(self):
         """Function is used to go back to the login window"""
         self.destroy() # closes the sign up window
