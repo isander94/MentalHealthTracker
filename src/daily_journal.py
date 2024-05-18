@@ -17,7 +17,7 @@ class DailyJournal(Toplevel):
         self.user_db = DatabaseManager()
         # For message when pressing save
         self.message_label = None
-        self.message_label = Label(self, text="", foreground="red")
+        self.message_label = Label(self, text="", foreground="red", background=bg_color)
         self.message_label.pack()
 
         # Frame and alignment for "Mood buttons"

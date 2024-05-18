@@ -3,12 +3,17 @@ from tkinter.ttk import *
 import main
 import sign_up_window
 import db_connector
+def rgb_to_hex(rgb):
+    """Convert RGB color to HEX format"""
+    return "#{:02x}{:02x}{:02x}".format(*rgb)
 class LoginWindow(Tk):
     """Initializes the login window"""
     def __init__(self):
         super().__init__()
         self.title("Log in")
         self.geometry("900x900")  # size of window
+        bg_color = rgb_to_hex((135, 190, 128))
+        self.configure(background=bg_color)
         self.message_label = None
         self.window()
 
@@ -32,7 +37,8 @@ class LoginWindow(Tk):
         LoginButton.place(x=350, y=340)  # when pressed checks if given information exxists and is correct
 
         # displays if login was succesfull or not
-        self.message_label = Label(self, text="", foreground="red")
+        bg_color = rgb_to_hex((135, 190, 128))
+        self.message_label = Label(self, text="", foreground="red", background=bg_color)
         self.message_label.place(x=350, y=370)
 
         # When pressed goes to create account window

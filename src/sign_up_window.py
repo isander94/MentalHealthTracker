@@ -4,6 +4,9 @@ from tkinter import *
 import re
 """Importing the DatabaseManager class from db_connector that will be used when connecting the code to database"""
 from db_connector import DatabaseManager
+def rgb_to_hex(rgb):
+    """Convert RGB color to HEX format"""
+    return "#{:02x}{:02x}{:02x}".format(*rgb)
 class LoginSystem(Toplevel):
     """LoginSystem used to create and handle the signup window"""
     def __init__(self, root = None): #add as a parameter user_db 
@@ -11,6 +14,8 @@ class LoginSystem(Toplevel):
         super().__init__(root)
         self.title("sign up") # Title of the windoe 
         self.geometry("900x900") # Geometry of the window
+        bg_color = rgb_to_hex((135, 190, 128))
+        self.configure(background=bg_color)
         self.message_label = None # Used later in the code for when an error message needs to be displayed
         self.first_name_label = Label(self, text="First name: ") # Text for the first name entry
         self.first_name_label.grid(padx=10, pady=5) # Amount of padding vertically and horizontally
@@ -44,8 +49,8 @@ class LoginSystem(Toplevel):
         # Creation of button with text "Create account" that will execute add_user() 
         goBack = Button(self, text="Create account", command=self.add_user)
         goBack.place(x=350, y=410) # Placement of button
-        
-        self.message_label = Label(self, text="", foreground="red") # Creation of the error message
+        bg_color = rgb_to_hex((135, 190, 128))
+        self.message_label = Label(self, text="", foreground="red", background=bg_color) # Creation of the error message
         self.message_label.place(x=350, y=390) # Placement of error message
         
         # Creation of button with text "quit program" that will execute on_close() 

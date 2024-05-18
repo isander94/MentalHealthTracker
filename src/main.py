@@ -3,6 +3,9 @@ from tkinter.ttk import *
 from daily_journal import DailyJournal
 from previous_notes import Previous_notes
 from statistic import Statistic
+def rgb_to_hex(rgb):
+    """Convert RGB color to HEX format"""
+    return "#{:02x}{:02x}{:02x}".format(*rgb)
 class Main(Toplevel):
 
     def __init__(self, root = None):
@@ -10,6 +13,8 @@ class Main(Toplevel):
         super().__init__(root)
         self.title("Menu")
         self.geometry("900x900")
+        bg_color = rgb_to_hex((135, 190, 128))
+        self.configure(background=bg_color)
         label = Label(self, text="Welcome to the menu\nWhat do you want to do today?")
         label.pack()
         

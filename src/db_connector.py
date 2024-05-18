@@ -15,7 +15,7 @@ class DatabaseManager():
         self.db_connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="team16",
+            password="Sahra123",
             database="mentalhealthtrackerdb"
         )
 
