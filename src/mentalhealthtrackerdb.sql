@@ -38,3 +38,11 @@ date_now datetime default current_timestamp,
 foreign key (user_id) references users(user_id)
 );
 select * from mood_ratings;
+select mood_rating from mood_ratings where user_id = 4;
+insert into mood_ratings (mood_rating, user_id, date_now) values (5, 4, "2024-05-18"),
+																 (6, 4, "2024-05-19"),
+																 (7, 4, "2024-05-20"),
+																 (8, 4, "2024-05-21"),
+																 (9, 4, "2024-05-23"),
+																 (10, 4, "2024-05-24"),
+																 (5, 4, "2024-05-25");
