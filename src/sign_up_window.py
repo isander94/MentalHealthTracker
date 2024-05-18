@@ -7,6 +7,7 @@ from db_connector import DatabaseManager
 def rgb_to_hex(rgb):
     """Convert RGB color to HEX format"""
     return "#{:02x}{:02x}{:02x}".format(*rgb)
+    
 class LoginSystem(Toplevel):
     """LoginSystem used to create and handle the signup window"""
     def __init__(self, root = None): #add as a parameter user_db 

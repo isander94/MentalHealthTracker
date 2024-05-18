@@ -3,13 +3,20 @@ from tkinter.ttk import *
 from db_connector import DatabaseManager
 from datetime import datetime
 
+from db_connector import DatabaseManager
+def rgb_to_hex(rgb):
+    """Convert RGB color to HEX format"""
+    return "#{:02x}{:02x}{:02x}".format(*rgb)
+
 class Previous_notes(Toplevel):
     def __init__(self, parent):
         super().__init__(parent)
         self.title("Daily Journal")
         self.geometry("900x900")
         self.notes_label = None
-        self.notes_label = Label(self, text="", foreground="green")
+        bg_color = rgb_to_hex((135, 190, 128))
+        self.configure(background=bg_color)
+        self.notes_label = Label(self, text="", foreground="yellow", background=bg_color)
         self.notes_label.place(x=350, y=340)
         self.user_db = DatabaseManager()
         go_back = Button(self, text="Go back", command=self.go_back)

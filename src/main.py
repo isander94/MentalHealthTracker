@@ -10,6 +10,7 @@ from datetime import datetime
 def rgb_to_hex(rgb):
     """Convert RGB color to HEX format"""
     return "#{:02x}{:02x}{:02x}".format(*rgb)
+    
 class Main(Toplevel):
 
     def __init__(self, root = None):
@@ -23,25 +24,28 @@ class Main(Toplevel):
         self.message_label = Label(self, text="", foreground="red", background=bg_color)
         self.message_label.pack()
         self.configure(background=bg_color)
-        label = Label(self, text="Welcome to the menu\nWhat do you want to do today?")
-        label.pack()
-        
-        notes = Button(self, text="Daily journal", command=self.Daily_journal_window)
-        self.geometry("900x900")
-        notes.pack()
+        label_font = ("Helvetica", 16, "bold")
+        label = Label(self, text="      Welcome to the menu\nWhat do you want to do today?",
+             foreground="brown", font=label_font, background=bg_color)
+        label.pack(pady=20)
 
-        stats = Button(self, text="This weeks statistics", command=self.Statistic_window)
-        stats.pack()
-        
-        previous_notes = Button(self, text="Previous notes", command=self.Previous_notes_window)
-        previous_notes.pack()
-        
-        quit = Button(self, text="Quit program", command=self.on_close)
-        quit.pack()
-        
-        log_out = Button(self, text="Log out", command=self.go_back)
-        log_out.pack()
+        button_width = 20
 
+        notes = Button(self, text="Daily journal", width=button_width, command=self.Daily_journal_window)
+        stats = Button(self, text="This weeks statistics", width=button_width, command=self.Statistic_window)
+        previous_notes = Button(self, text="Previous notes", width=button_width,  command=self.Previous_notes_window)
+        quit_button = Button(self, text="Quit program", width=button_width, command=self.on_close)
+        log_out = Button(self, text="Log out", width=button_width, command=self.go_back)
+
+        # Centering buttons vertically and horizontally
+        button_y_positions = [0.3, 0.4, 0.5, 0.6, 0.7]
+
+        notes.place(relx=0.5, rely=button_y_positions[0], anchor=CENTER)
+        stats.place(relx=0.5, rely=button_y_positions[1], anchor=CENTER)
+        previous_notes.place(relx=0.5, rely=button_y_positions[2], anchor=CENTER)
+        quit_button.place(relx=0.5, rely=button_y_positions[3], anchor=CENTER)
+        log_out.place(relx=0.5, rely=button_y_positions[4], anchor=CENTER)
+    
     def on_close(self):
         self.destroy()
         self.master.destroy()

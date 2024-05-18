@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
+#from PIL import Image, ImageTK
 import main
 import sign_up_window
 import db_connector
@@ -15,6 +16,12 @@ class LoginWindow(Tk):
         bg_color = rgb_to_hex((135, 190, 128))
         self.configure(background=bg_color)
         self.message_label = None
+
+        """ self.image = Image.open("image.png")
+        self.photo = ImageTK.PhotoImage(self.image)
+        self.image_label = Label(self, image=self.photo)
+        self.image_label.image = self.photo
+        self.image_label.place(x=350, y=50) """
         self.window()
 
         self.mainloop()
@@ -22,28 +29,28 @@ class LoginWindow(Tk):
     def window(self):
         """Shows the buttons and input fields on the window"""
         self.emailLabel = Label(self, text="Email")  # email label
-        self.emailLabel.place(x=350, y=250)
+        self.emailLabel.place(x=350, y=320)
 
         self.emailEntry = Entry(self)  # input for email
-        self.emailEntry.place(x=350,y=270)
+        self.emailEntry.place(x=350,y=340)
 
         self.passwordLabel = Label(self, text="Password")  # password label
-        self.passwordLabel.place(x=350,y=300)
+        self.passwordLabel.place(x=350,y=370)
 
         self.passwordEntry = Entry(self, show="*")  # input for password
-        self.passwordEntry.place(x=350, y=320)
+        self.passwordEntry.place(x=350, y=390)
 
         LoginButton = Button(self, text="Login", command=self.check_login_info)  # button for login
-        LoginButton.place(x=350, y=340)  # when pressed checks if given information exxists and is correct
+        LoginButton.place(x=350, y=420)  # when pressed checks if given information exxists and is correct
 
         # displays if login was succesfull or not
         bg_color = rgb_to_hex((135, 190, 128))
         self.message_label = Label(self, text="", foreground="red", background=bg_color)
-        self.message_label.place(x=350, y=370)
+        self.message_label.place(x=350, y=450)
 
         # When pressed goes to create account window
         createAccountButton = Button(self, text="Create account", command=self.openSignUp)
-        createAccountButton.place(x=350,y=400)
+        createAccountButton.place(x=350,y=500)
 
     def openMenu(self):
         """Function when succesfully loging in, goes to menu and closes
