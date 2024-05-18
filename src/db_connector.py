@@ -15,9 +15,12 @@ class DatabaseManager():
         self.db_connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="team16",
+            password="isaacPa55w0rd!",
             database="mentalhealthtrackerdb"
         )
+
+    def close_connection(self):
+        self.db_connection.close()
 
     def user_credentials(self, email, password):
         '''Function to handle user login'''
