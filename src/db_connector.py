@@ -20,6 +20,7 @@ class DatabaseManager():
         )
 
     def close_connection(self):
+        """Method for closing a connection"""
         self.db_connection.close()
 
     def user_credentials(self, email, password):
