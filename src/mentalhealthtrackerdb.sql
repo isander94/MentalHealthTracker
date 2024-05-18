@@ -30,7 +30,7 @@ insert into notes (note, user_id) values ("HIHI", 2),
 										 ("NAAA", 3);
 SELECT note, date_now from notes where user_id = 4;
 
-create table mood_ratings (
+create table mood_rating (
 mood_rating_id int auto_increment primary key not null,
 mood_rating int not null,
 user_id int,
