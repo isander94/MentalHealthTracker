@@ -21,15 +21,15 @@ class DailyJournal(Toplevel):
         self.message_label.pack()
 
         # Frame and alignment for "Mood buttons"
-        mood_frame = Frame(self)
-        mood_frame.pack(pady=10)
+        #mood_frame = Frame(self)
+        #mood_frame.pack(pady=10)
 
         # Mood rating buttons
-        self.mood_buttons = []
-        for i in range(1, 11):
-            btn = Button(mood_frame, text=str(i), width=2)
-            btn.pack(side="left", padx=5)
-            self.mood_buttons.append(btn)
+        #self.mood_buttons = []
+        #for i in range(1, 11):
+        #    btn = Button(mood_frame, text=str(i), width=2)
+        #    btn.pack(side="left", padx=5)
+        #    self.mood_buttons.append(btn)
 
          # Label for journal entry section
         Label(self, text="Daily journal text").pack(pady=10)
@@ -37,20 +37,27 @@ class DailyJournal(Toplevel):
         # Label for writing area
         self.text_area = Text(self, width=50, height=20)
         self.text_area.pack(padx=10, pady=10)
-
+        
         #Button to save the journal
-        save_button = Button(self, text="Save", command=self.save) #,command=self.save)
+        save_button = Button(self, text="Save note", command=self.save_note) #,command=self.save_note)
         save_button.pack(pady=10)
-        previous_notes_button = Button(self, text="Previous notes", command=self.previous_notes) #,command=self.save)
-        previous_notes_button.pack(pady=20)
+        
+        # To be able to save mood rating
+        Label(self, text="How do you feel from 1-10?").pack(pady=10)        
+        self.mood_text_area = Text(self, width=5, height=2)
+        self.mood_text_area.pack(padx=10, pady=10)
+        mood_rating = Button(self, text="Save mood", command=self.save_mood)
+        mood_rating.pack(pady=5)
+
+        
         #Quit button to exit the application
-        quit_button = Button(self, text="quit", command=self.on_close)
+        quit_button = Button(self, text="Quit", command=self.on_close)
         quit_button.pack(pady=5)
 
         go_back = Button(self, text="Go back", command=self.go_back)
         go_back.pack(pady=5)
 
-    def save(self):
+    def save_note(self):
         """function to save journal"""
         text = self.text_area.get("1.0", "end-1c")
         if self.user_db.add_note(text, self.user_db.email):
@@ -63,9 +70,22 @@ class DailyJournal(Toplevel):
         self.destroy()
         self.master.destroy()
 
-    def previous_notes(self):
-        previous_notes = self.user_db.previous_notes(self.user_db.email)
+    #def previous_notes(self):
+    #    previous_notes = self.user_db.previous_notes(self.user_db.email)
 
+    def save_mood(self):
+        mood = self.mood_text_area.get("1.0", "end-1c")
+        try:
+            if isinstance(mood, str):
+                mood_rating_int = int(mood)
+            if isinstance(mood_rating_int, int) and 1 <= mood_rating_int <= 10:
+                if self.user_db.save_mood_rating(self.user_db.email, mood_rating_int):
+                    self.message_label.config(text="Mood saved successfully")
+                else:
+                    self.message_label.config(text="An error has occurred")
+        except:
+            self.message_label.config(text="Please input a valid number from 1-10")
+        
     def go_back(self):
         """Function is used to go back to the login window"""
         self.destroy() # closes the sign up window

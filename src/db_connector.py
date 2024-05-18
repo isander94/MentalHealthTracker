@@ -117,3 +117,22 @@ class DatabaseManager():
         else:
             cursor.close()
             return False
+
+    def save_mood_rating(self, email, mood_rating):
+        cursor = self.db_connection.cursor()
+        query1 = "SELECT user_id FROM users WHERE email = %s;"
+        data1 = (email,)
+        cursor.execute(query1, data1)
+        user_id = cursor.fetchone()
+        if user_id:
+            query2 = "INSERT INTO mood_ratings (mood_rating, user_id, date_now) VALUES (%s, %s, %s);"
+            data2 = (mood_rating, user_id[0], datetime.now())
+            cursor.execute(query2, data2)
+            self.db_connection.commit()
+            cursor.close()
+            return True
+        
+        else:
+            cursor.close()
+            return False
+

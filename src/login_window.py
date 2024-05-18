@@ -16,7 +16,7 @@ class LoginWindow(Tk):
 
     def window(self):
         """Shows the buttons and input fields on the window"""
-        self.emailLabel = Label(self, text="email")  # email label
+        self.emailLabel = Label(self, text="Email")  # email label
         self.emailLabel.place(x=350, y=250)
 
         self.emailEntry = Entry(self)  # input for email
