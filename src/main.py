@@ -88,19 +88,18 @@ class Main(Toplevel):
                 date_string = dates_list[x].strftime("%m-%d")
                 dates_list[x] = date_string
 
+
+            
+            dict = {}
+            for i in range(len(dates_list)):
+                dict[dates_list[i]] = moods_list[i]
+            dates_list = list(dict.keys())    
+            moods_list = list(dict.values())
+                    
             # Take the last 7 dates and moods
             dates_list = dates_list[-7:]
             moods_list = moods_list[-7:]
             
-            # Removing duplicate dates and their moods
-            for i in range(len(dates_list)):
-                for j in range(i + 1, len(dates_list)):
-                    if dates_list[i] == dates_list[j]:
-                        dates_list.pop(j)
-                        moods_list.pop(j)
-
-                    
-
             # Create a graph
             pyplot.title("Mood statistics")
             pyplot.xlabel("Date")

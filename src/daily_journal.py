@@ -39,7 +39,7 @@ class DailyJournal(Toplevel):
         self.text_area.pack(padx=10, pady=5)
 
         #Button to save the journal
-        save_button = Button(self, text="Save note", command=self.save_note)
+        save_button = Button(self, text="Save note", command=self.save_entry)
         save_button.pack(pady=5)
 
         #Button to go back to main window
@@ -56,13 +56,19 @@ class DailyJournal(Toplevel):
         print(len(text))
         if (0 == len(text)) or (len(text) > 100):
             self.message_label.config(text="Please enter a note bellow or equal to 100 characters")
+            return False
         else:
             if self.user_db.add_note(text, self.user_db.email):
                 self.message_label.config(text="Note saved successfully")
+                return True
             else:
                 self.message_label.config(text="An error occured")
-        self.save_mood()
-        self.go_back()
+                return False
+    
+    def save_entry(self):
+        if self.save_note() and self.save_mood():
+            self.go_back()
+             
 
     def on_close(self):
         """Close the application."""
@@ -80,10 +86,16 @@ class DailyJournal(Toplevel):
                 if 1 <= mood_rating_int <= 10:
                     if self.user_db.save_mood_rating(self.user_db.email, mood_rating_int):
                         self.message_label.config(text="Mood saved successfully")
+                        return True
                     else:
                         self.message_label.config(text="An error has occurred")
+                        return False
+                else:
+                    self.message_label.config(text="Please input a valid number from 1-10")
+                    return False
             except:
                 self.message_label.config(text="Please input a valid number from 1-10")
+                return False
 
     def go_back(self):
         """Function is used to go back to the login window"""
