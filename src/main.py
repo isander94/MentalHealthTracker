@@ -1,4 +1,4 @@
-"""Module for main window.""""
+"""Module for main window."""
 from tkinter import *
 from tkinter.ttk import *
 from daily_journal import DailyJournal
