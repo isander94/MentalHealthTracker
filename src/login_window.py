@@ -1,4 +1,4 @@
-"""Module for login windo.""""
+"""Module for login windo."""
 from tkinter import *
 from tkinter.ttk import *
 #from PIL import Image, ImageTK
