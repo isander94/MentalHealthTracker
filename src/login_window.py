@@ -54,8 +54,12 @@ class LoginWindow(Tk):
 
         # When pressed goes to create account window
         createAccountButton = Button(self, text="Create account", command=self.openSignUp)
-        createAccountButton.place(x=350,y=500)
-
+        createAccountButton.place(x=350,y=460)
+        
+        quit_program = Button(self, text="Quit program", command=self.destroy)
+        quit_program.place(x=350,y=500)
+        
+        
     def openMenu(self):
         """Function when succesfully loging in, goes to menu and closes
         login window"""
