@@ -1,65 +1,76 @@
-"""Module for login windo."""
 from tkinter import *
 from tkinter.ttk import *
-#from PIL import Image, ImageTK
+from PIL import Image, ImageTk
 import main
 import sign_up_window
+
 import db_connector
 def rgb_to_hex(rgb):
     """Convert RGB color to HEX format"""
     return "#{:02x}{:02x}{:02x}".format(*rgb)
 class LoginWindow(Tk):
-    """Class the login window."""
-
-
+    """Initializes the login window"""
     def __init__(self):
-        """Initializing the class"""
         super().__init__()
         self.title("Log in")
         self.geometry("900x900")  # size of window
         bg_color = rgb_to_hex((135, 190, 128))
         self.configure(background=bg_color)
         self.message_label = None
+        
+        # Load and process the image to make white background transparent
+        self.image = Image.open("Image.png")
+        self.image = self.image.convert("RGBA")
+        datas = self.image.getdata()
 
-        """ self.image = Image.open("image.png")
-        self.photo = ImageTK.PhotoImage(self.image)
-        self.image_label = Label(self, image=self.photo)
-        self.image_label.image = self.photo
-        self.image_label.place(x=350, y=50) """
+        new_data = []
+        for item in datas:
+            # Change all white (also shades of whites)
+            # (r, g, b, a) to (r, g, b, 0)
+            if item[:3] == (255, 255, 255):
+                new_data.append((255, 255, 255, 0))
+            else:
+                new_data.append(item)
+                
+        self.image.putdata(new_data)
+
+        self.image = self.image.resize((221, 221))
+        self.photo = ImageTk.PhotoImage(self.image)
+        self.image_label = Label(self, image=self.photo, background=rgb_to_hex((135, 190, 128)))
+        self.image_label.pack(pady=30)
+        
         self.window()
-
         self.mainloop()
 
     def window(self):
         """Shows the buttons and input fields on the window"""
-        self.emailLabel = Label(self, text="Email")  # email label
-        self.emailLabel.place(x=350, y=320)
+        #Backround color
+        bg_color = rgb_to_hex((135, 190, 128))
+
+        self.emailLabel = Label(self, text="Email", foreground="white", background=bg_color, font=("Helvetica", 8, "bold"))  # email label
+        self.emailLabel.pack(pady=5)
 
         self.emailEntry = Entry(self)  # input for email
-        self.emailEntry.place(x=350,y=340)
+        self.emailEntry.pack(pady=5)
 
-        self.passwordLabel = Label(self, text="Password")  # password label
-        self.passwordLabel.place(x=350,y=370)
+        self.passwordLabel = Label(self, text="Password",foreground="white", background=bg_color,font=("Helvetica", 8, "bold"))  # password label
+        self.passwordLabel.pack(pady=5)
 
         self.passwordEntry = Entry(self, show="*")  # input for password
-        self.passwordEntry.place(x=350, y=390)
+        self.passwordEntry.pack(pady=5)
 
         LoginButton = Button(self, text="Login", command=self.check_login_info)  # button for login
-        LoginButton.place(x=350, y=420)  # when pressed checks if given information exxists and is correct
+        LoginButton.pack(pady=5)  # when pressed checks if given information exxists and is correct
 
         # displays if login was succesfull or not
         bg_color = rgb_to_hex((135, 190, 128))
         self.message_label = Label(self, text="", foreground="red", background=bg_color)
-        self.message_label.place(x=350, y=450)
+        self.message_label.pack(pady=5)
 
         # When pressed goes to create account window
         createAccountButton = Button(self, text="Create account", command=self.openSignUp)
-        createAccountButton.place(x=350,y=460)
-        
-        quit_program = Button(self, text="Quit program", command=self.destroy)
-        quit_program.place(x=350,y=500)
-        
-        
+        createAccountButton.pack(pady=5)
+
     def openMenu(self):
         """Function when succesfully loging in, goes to menu and closes
         login window"""
