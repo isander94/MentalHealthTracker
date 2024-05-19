@@ -46,3 +46,4 @@ insert into mood_ratings (mood_rating, user_id, date_now) values (5, 4, "2024-05
 																 (9, 4, "2024-05-23"),
 																 (10, 4, "2024-05-24"),
 																 (5, 4, "2024-05-25");
+SELECT distinct date_now, mood_rating FROM mood_ratings WHERE user_id = 4;

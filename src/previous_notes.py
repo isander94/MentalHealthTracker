@@ -23,7 +23,7 @@ class Previous_notes(Toplevel):
         self.configure(background=bg_color)
         title_label = Label(self, text="Your Previous Notes", font=("Helvetica", 28, "bold"), foreground="white", background=bg_color)
         title_label.pack(pady=5)
-        self.notes_label = Label(self, text="", foreground="yellow", background=bg_color, font=("Helvetica", 10, "bold"))
+        self.notes_label = Label(self, text="", foreground="white", background=bg_color, font=("Helvetica", 10, "bold"))
         self.notes_label.pack()
         self.user_db = DatabaseManager()
         go_back = Button(self, text="Go back", command=self.go_back)

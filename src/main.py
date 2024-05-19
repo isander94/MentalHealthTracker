@@ -78,9 +78,12 @@ class Main(Toplevel):
             moods_list = []
             # Extract the moods and dates from tuples and place in a list
             for x in range(len(moods)):
-                moods_list.append(moods[x][0])
-                dates_list.append(moods[x][1])
-
+                moods_list.append(moods[x][1])
+                dates_list.append(moods[x][0])
+            print("Mood:")
+            print(moods_list)
+            print("Date:")
+            print(dates_list)
             for x in range (len(dates_list)):
                 date_string = dates_list[x].strftime("%m-%d")
                 dates_list[x] = date_string
@@ -88,6 +91,15 @@ class Main(Toplevel):
             # Take the last 7 dates and moods
             dates_list = dates_list[-7:]
             moods_list = moods_list[-7:]
+            
+            # Removing duplicate dates and their moods
+            for i in range(len(dates_list)):
+                for j in range(i + 1, len(dates_list)):
+                    if dates_list[i] == dates_list[j]:
+                        dates_list.pop(j)
+                        moods_list.pop(j)
+
+                    
 
             # Create a graph
             pyplot.title("Mood statistics")
