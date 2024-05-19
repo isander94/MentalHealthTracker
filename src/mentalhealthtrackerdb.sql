@@ -34,11 +34,11 @@ create table mood_ratings (
 mood_rating_id int auto_increment primary key not null,
 mood_rating int not null,
 user_id int,
-date_now datetime default current_timestamp,
+date_now DATE,
 foreign key (user_id) references users(user_id)
 );
+
 select * from mood_ratings;
-select mood_rating from mood_ratings where user_id = 4;
 insert into mood_ratings (mood_rating, user_id, date_now) values (5, 4, "2024-05-18"),
 																 (6, 4, "2024-05-19"),
 																 (7, 4, "2024-05-20"),
