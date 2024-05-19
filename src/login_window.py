@@ -84,8 +84,6 @@ class LoginWindow(Tk):
         email = self.emailEntry.get()
         password = self.passwordEntry.get()
         user_db = db_connector.DatabaseManager()
-        print(f"{email}")
-        print(f"{password}")
         # Checks if the credentials exists and are correct
         # then displays message
         if user_db.user_credentials(email, password):
