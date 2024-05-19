@@ -14,7 +14,6 @@ def rgb_to_hex(rgb):
 class Main(Toplevel):
     """Main class."""
 
-
     def __init__(self, root = None):
         """Manin class initialization."""
         super().__init__(root)
@@ -79,16 +78,13 @@ class Main(Toplevel):
             for x in range(len(moods)):
                 moods_list.append(moods[x][1])
                 dates_list.append(moods[x][0])
-            print("Mood:")
-            print(moods_list)
-            print("Date:")
-            print(dates_list)
+            
+            # Format the date strings
             for x in range (len(dates_list)):
                 date_string = dates_list[x].strftime("%m-%d")
                 dates_list[x] = date_string
 
-
-            
+            # Remove duplicates by creating a dictionary and then changing them back to a list
             dict = {}
             for i in range(len(dates_list)):
                 dict[dates_list[i]] = moods_list[i]
@@ -106,10 +102,11 @@ class Main(Toplevel):
             pyplot.plot(dates_list, moods_list)
             pyplot.show()
         else:
+            # If there is't atleast 7 entries, the graph will not be displayed
             self.message_label.config(text="Not enough data")
 
 
     def go_back(self):
         """Function is used to go back to the login window"""
         self.destroy() # closes the sign up window
-        self.master.deiconify() #
+        self.master.deiconify()
