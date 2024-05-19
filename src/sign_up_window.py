@@ -13,7 +13,7 @@ class LoginSystem(Toplevel):
     def __init__(self, root = None): #add as a parameter user_db 
         
         super().__init__(root)
-        self.title("sign up") # Title of the windoe 
+        self.title("Sign up") # Title of the windoe 
         self.geometry("900x900") # Geometry of the window
         bg_color = rgb_to_hex((135, 190, 128))
         self.configure(background=bg_color)
