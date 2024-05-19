@@ -38,16 +38,16 @@ class DailyJournal(Toplevel):
         self.text_area = Text(self, width=50, height=20)
         self.text_area.pack(padx=10, pady=10)
         
-        #Button to save the journal
-        save_button = Button(self, text="Save note", command=self.save_note) #,command=self.save_note)
-        save_button.pack(pady=10)
-        
-        # To be able to save mood rating
+        #To be able to save mood rating
         Label(self, text="How do you feel from 1-10?").pack(pady=10)        
         self.mood_text_area = Text(self, width=5, height=2)
         self.mood_text_area.pack(padx=10, pady=10)
-        mood_rating = Button(self, text="Save mood", command=self.save_mood)
-        mood_rating.pack(pady=5)
+        # mood_rating = Button(self, text="Save mood", command=self.save_mood)
+        # mood_rating.pack(pady=5)
+        
+        #Button to save the entry
+        save_button = Button(self, text="Save", command=self.save_note) #,command=self.save_note)
+        save_button.pack(pady=10)
 
         
         #Quit button to exit the application
@@ -68,6 +68,11 @@ class DailyJournal(Toplevel):
                 self.message_label.config(text="Note saved successfully")
             else:
                 self.message_label.config(text="An error occured")
+
+        # Save the mood
+        self.save_mood()
+        # Go back to main menu
+        self.go_back()
 
     def on_close(self):
         """Close the application."""
