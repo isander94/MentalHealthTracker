@@ -19,7 +19,7 @@ class LoginWindow(Tk):
         self.message_label = None
         
         # Load and process the image to make white background transparent
-        self.image = Image.open("Image.png")
+        self.image = Image.open("image.png")
         self.image = self.image.convert("RGBA")
         datas = self.image.getdata()
 
