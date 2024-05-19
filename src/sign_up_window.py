@@ -20,28 +20,28 @@ class LoginSystem(Toplevel):
         bg_color = rgb_to_hex((135, 190, 128))
         self.configure(background=bg_color)
         self.message_label = None # Used later in the code for when an error message needs to be displayed
-        self.first_name_label = Label(self, text="First name: ") # Text for the first name entry
+        self.first_name_label = Label(self, text="First name: ", foreground="white", background=bg_color, font=("Helvetica", 8, "bold")) # Text for the first name entry
         self.first_name_label.grid(padx=10, pady=5) # Amount of padding vertically and horizontally
         self.first_name_label.place(x=350, y=200) # Placement of text
         self.first_name_entry = Entry(self) # Creation of the input box
         self.first_name_entry.grid(padx=10, pady=5) # Padding for the input box vertically and horizontally
         self.first_name_entry.place(x=350, y=220) # Placement of input box
 
-        self.last_name_label = Label(self, text="Last name: ") # Text for the last name entry
+        self.last_name_label = Label(self, text="Last name: ", foreground="white", background=bg_color, font=("Helvetica", 8, "bold")) # Text for the last name entry
         self.last_name_label.grid(padx=10, pady=5) # Amount of padding vertically and horizontally
         self.last_name_label.place(x=350, y=250) # Placement of text
         self.last_name_entry = Entry(self) # Creation of the input box
         self.last_name_entry.grid(padx=10, pady=5) # Padding for the input box vertically and horizontally
         self.last_name_entry.place(x=350, y=270) # Placement of input box
 
-        self.email_label = Label(self, text="Email: ") # Text for the email entry
+        self.email_label = Label(self, text="Email: ", foreground="white", background=bg_color, font=("Helvetica", 8, "bold")) # Text for the email entry
         self.email_label.grid(padx=10, pady=5) # Amount of padding vertically and horizontally
         self.email_label.place(x=350, y=300) # Placement of text
         self.email_entry = Entry(self) # Creation of the input box
         self.email_entry.grid(padx=10, pady=5) # Padding for the input box vertically and horizontally
         self.email_entry.place(x=350, y=320) # Placement of input box
 
-        self.password_label = Label(self, text="Password: ") # Text for the password entry
+        self.password_label = Label(self, text="Password: ", foreground="white", background=bg_color, font=("Helvetica", 8, "bold")) # Text for the password entry
         self.password_label.grid(padx=10, pady=5) # Amount of padding vertically and horizontally
         self.password_label.place(x=350, y=350) # Placement of text
         self.password_entry = Entry(self, show="*") # Creation of the input box
