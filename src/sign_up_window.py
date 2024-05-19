@@ -32,21 +32,20 @@ class LoginSystem(Toplevel):
         self.last_name_entry.grid(padx=10, pady=5) # Padding for the input box vertically and horizontally
         self.last_name_entry.place(x=350, y=270) # Placement of input box
 
-        self.email_label = Label(self, text="Email name: ") # Text for the email entry
+        self.email_label = Label(self, text="Email: ") # Text for the email entry
         self.email_label.grid(padx=10, pady=5) # Amount of padding vertically and horizontally
         self.email_label.place(x=350, y=300) # Placement of text
         self.email_entry = Entry(self) # Creation of the input box
         self.email_entry.grid(padx=10, pady=5) # Padding for the input box vertically and horizontally
         self.email_entry.place(x=350, y=320) # Placement of input box
 
-        self.password_label = Label(self, text="Password name: ") # Text for the password entry
+        self.password_label = Label(self, text="Password: ") # Text for the password entry
         self.password_label.grid(padx=10, pady=5) # Amount of padding vertically and horizontally
         self.password_label.place(x=350, y=350) # Placement of text
         self.password_entry = Entry(self, show="*") # Creation of the input box
         self.password_entry.grid(padx=10, pady=5) # Padding for the input box vertically and horizontally
         self.password_entry.place(x=350, y=370) # Placement of input box
 
-        '''self.create_login_ui()'''
         # Creation of button with text "Create account" that will execute add_user() 
         goBack = Button(self, text="Create account", command=self.add_user)
         goBack.place(x=350, y=420) # Placement of button
