@@ -23,6 +23,9 @@ The Mental Health Tracker App is designed to support individuals in tracking the
     Clone the repository:
 - git clone: <https://github.com/isander94/MentalHealthTracker.git>
 
+## Run the Program
+- python login_window.py
+
 ## License
 This project is licensed under the MIT License.
 
