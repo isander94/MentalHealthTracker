@@ -64,7 +64,6 @@ class Main(Toplevel):
         # Fetch notes and moods
         moods = self.user_db.get_mood(self.user_db.email)
 
-    
         if len(moods) >= 7:
             # Create lists where dates and lists will be stored
             dates_list = []
