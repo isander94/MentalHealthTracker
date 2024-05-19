@@ -53,7 +53,6 @@ class DailyJournal(Toplevel):
     def save_note(self):
         """function to save journal"""
         text = self.text_area.get("1.0", "end-1c")
-        print(len(text))
         if (0 == len(text)) or (len(text) > 100):
             self.message_label.config(text="Please enter a note bellow or equal to 100 characters")
             return False
