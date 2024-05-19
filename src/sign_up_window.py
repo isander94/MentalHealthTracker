@@ -11,7 +11,6 @@ def rgb_to_hex(rgb):
 class LoginSystem(Toplevel):
     """LoginSystem used to create and handle the signup window."""
 
-
     def __init__(self, root = None): #add as a parameter user_db
         """Class initialization."""
         super().__init__(root)
@@ -98,8 +97,6 @@ class LoginSystem(Toplevel):
                 self.message_label.config(text="Empty input in first och last name")
         else: # If the pattern was not inside the password
             self.message_label.config(text="""Password requirments: atleast 8 character, 1 big and small letter, special sign (@$!%?&#)""")
-
-
 
     def go_back(self):
         """Function is used to go back to the login window"""
