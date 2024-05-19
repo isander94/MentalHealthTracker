@@ -11,8 +11,6 @@ def rgb_to_hex(rgb):
 
 class Previous_notes(Toplevel):
     """Class for showing notes."""
-
-
     def __init__(self, parent):
         """Class initialization."""
         super().__init__(parent)
@@ -31,6 +29,7 @@ class Previous_notes(Toplevel):
         self.print_previous_notes()
 
     def print_previous_notes(self):
+        """Prints the previous notes of the user."""
         email = self.user_db.email
         all_previous_notes = self.user_db.previous_notes(email)
         notes_text = ""
@@ -42,4 +41,4 @@ class Previous_notes(Toplevel):
     def go_back(self):
         """Function is used to go back to the login window"""
         self.destroy() # closes the sign up window
-        self.master.deiconify() #
+        self.master.deiconify() # Shows the parent window
