@@ -25,15 +25,15 @@ class Main(Toplevel):
         self.message_label.pack()
         self.configure(background=bg_color)
         label_font = ("Helvetica", 16, "bold")
-        label = Label(self, text="      Welcome to the menu\nWhat do you want to do today?",
-             foreground="brown", font=label_font, background=bg_color)
+        label = Label(self, text=f"Welcome {self.user_db.first_name}\nWhat do you want to do today?",
+             foreground="brown", font=label_font, background=bg_color, anchor="center")
         label.pack(pady=20)
 
         button_width = 20
 
         notes = Button(self, text="Daily journal", width=button_width, command=self.Daily_journal_window)
         stats = Button(self, text="This weeks statistics", width=button_width, command=self.Statistic_window)
-        previous_notes = Button(self, text="Previous notes", width=button_width,  command=self.Previous_notes_window)
+        previous_notes = Button(self, text="View notes", width=button_width,  command=self.Previous_notes_window)
         quit_button = Button(self, text="Quit program", width=button_width, command=self.on_close)
         log_out = Button(self, text="Log out", width=button_width, command=self.go_back)
 

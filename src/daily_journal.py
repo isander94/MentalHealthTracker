@@ -20,17 +20,6 @@ class DailyJournal(Toplevel):
         self.message_label = Label(self, text="", foreground="red", background=bg_color)
         self.message_label.pack()
 
-        # Frame and alignment for "Mood buttons"
-        #mood_frame = Frame(self)
-        #mood_frame.pack(pady=10)
-
-        # Mood rating buttons
-        #self.mood_buttons = []
-        #for i in range(1, 11):
-        #    btn = Button(mood_frame, text=str(i), width=2)
-        #    btn.pack(side="left", padx=5)
-        #    self.mood_buttons.append(btn)
-
          # Label for journal entry section
         title_label = Label(self, text="Daily Journal", font=("Helvetica", 28, "bold"), foreground="white", background=bg_color)
         title_label.pack(pady=5)
@@ -39,8 +28,7 @@ class DailyJournal(Toplevel):
         Label(self, text="How do you feel from 1-10?", font=("Helvetica", 12, "bold"), foreground="white", background=bg_color).pack(pady=10)        
         self.mood_text_area = Text(self, width=5, height=2)
         self.mood_text_area.pack(padx=10, pady=10, anchor="center")
-        mood_rating = Button(self, text="Save mood", command=self.save_mood)
-        mood_rating.pack(pady=5)
+        
 
         # Label for writing area
         self.text_area = Text(self, width=50, height=20)
@@ -69,14 +57,13 @@ class DailyJournal(Toplevel):
                 self.message_label.config(text="Note saved successfully")
             else:
                 self.message_label.config(text="An error occured")
+        self.save_mood()
+        self.go_back()
 
     def on_close(self):
         """Close the application."""
         self.destroy()
         self.master.destroy()
-
-    #def previous_notes(self):
-    #    previous_notes = self.user_db.previous_notes(self.user_db.email)
 
     def save_mood(self):
         mood = self.mood_text_area.get("1.0", "end-1c")

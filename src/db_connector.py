@@ -15,7 +15,7 @@ class DatabaseManager():
         self.db_connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Sahra123",
+            password="team16",
             database="mentalhealthtrackerdb"
         )
 
@@ -53,7 +53,8 @@ class DatabaseManager():
         self.last_name = last_name
         self.email = email
         self.password = password
-
+        DatabaseManager.first_name = first_name
+        DatabaseManager.last_name = last_name
         ''' Check if email already exists in the database'''
         cursor.execute("SELECT * FROM users WHERE email = %s;", (self.email,))
         existing_user = cursor.fetchall()
