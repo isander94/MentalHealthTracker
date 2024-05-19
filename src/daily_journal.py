@@ -32,30 +32,31 @@ class DailyJournal(Toplevel):
         #    self.mood_buttons.append(btn)
 
          # Label for journal entry section
-        Label(self, text="Daily journal text").pack(pady=10)
+        title_label = Label(self, text="Daily Journal", font=("Helvetica", 28, "bold"), foreground="white", background=bg_color)
+        title_label.pack(pady=5)
+
+        # To be able to save mood rating
+        Label(self, text="How do you feel from 1-10?", font=("Helvetica", 12, "bold"), foreground="white", background=bg_color).pack(pady=10)        
+        self.mood_text_area = Text(self, width=5, height=2)
+        self.mood_text_area.pack(padx=10, pady=10, anchor="center")
+        mood_rating = Button(self, text="Save mood", command=self.save_mood)
+        mood_rating.pack(pady=5)
 
         # Label for writing area
         self.text_area = Text(self, width=50, height=20)
-        self.text_area.pack(padx=10, pady=10)
-        
-        #To be able to save mood rating
-        Label(self, text="How do you feel from 1-10?").pack(pady=10)        
-        self.mood_text_area = Text(self, width=5, height=2)
-        self.mood_text_area.pack(padx=10, pady=10)
-        # mood_rating = Button(self, text="Save mood", command=self.save_mood)
-        # mood_rating.pack(pady=5)
-        
-        #Button to save the entry
-        save_button = Button(self, text="Save", command=self.save_note) #,command=self.save_note)
-        save_button.pack(pady=10)
+        self.text_area.pack(padx=10, pady=5)
 
-        
+        #Button to save the journal
+        save_button = Button(self, text="Save note", command=self.save_note)
+        save_button.pack(pady=5)
+
+        #Button to go back to main window
+        go_back = Button(self, text="Go back", command=self.go_back)
+        go_back.pack(pady=5)
+
         #Quit button to exit the application
         quit_button = Button(self, text="Quit", command=self.on_close)
         quit_button.pack(pady=5)
-
-        go_back = Button(self, text="Go back", command=self.go_back)
-        go_back.pack(pady=5)
 
     def save_note(self):
         """function to save journal"""
@@ -68,11 +69,6 @@ class DailyJournal(Toplevel):
                 self.message_label.config(text="Note saved successfully")
             else:
                 self.message_label.config(text="An error occured")
-
-        # Save the mood
-        self.save_mood()
-        # Go back to main menu
-        self.go_back()
 
     def on_close(self):
         """Close the application."""
