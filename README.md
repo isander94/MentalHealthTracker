@@ -18,6 +18,7 @@ The Mental Health Tracker App is designed to support individuals in tracking the
     - Python
     - Tkinter for GUI
     - Mysql for database managenment
+    - matplotlib.pyplot for graph
 
 ## Installation
     Clone the repository:
