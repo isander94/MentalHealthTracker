@@ -15,7 +15,7 @@ class DatabaseManager():
         self.db_connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="team16",
+            password="isaacPa55w0rd!",
             database="mentalhealthtrackerdb"
         )
 
@@ -84,6 +84,7 @@ class DatabaseManager():
         cursor.close()
 
     def add_note(self, note, email):
+        """Add a note to the database"""
         cursor = self.db_connection.cursor()
         query1 = "SELECT user_id FROM users WHERE email = %s;"
         data1 = (email,)
@@ -103,6 +104,7 @@ class DatabaseManager():
             return False
 
     def previous_notes(self, email):
+        """Retun saved notes from the database depending on the user email"""
         cursor = self.db_connection.cursor()
         query1 = "SELECT user_id FROM users WHERE email = %s;"
         data1 = (email,)
@@ -124,6 +126,7 @@ class DatabaseManager():
             return False
 
     def save_mood_rating(self, email, mood_rating):
+        """Save a mood rating associated with a user to the database"""
         cursor = self.db_connection.cursor()
         query1 = "SELECT user_id FROM users WHERE email = %s;"
         data1 = (email,)
@@ -143,6 +146,7 @@ class DatabaseManager():
 
     
     def get_mood(self, email):
+        """Return saved mood ratings based on user email"""
         cursor = self.db_connection.cursor()
         query1 = "SELECT user_id FROM users WHERE email = %s;"
         data1 = (email,)
