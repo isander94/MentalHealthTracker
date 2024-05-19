@@ -34,14 +34,11 @@ class DatabaseManager():
         data = (email, password,)
         cursor.execute(sql_query, data)
         users = cursor.fetchall()
-        print(users)
+  
         if users:
-            print("Login successful")
-            print(users)
             cursor.close()
             return True
         else:
-           print("Invalid email or password")
            cursor.close()
            return False
 
@@ -60,18 +57,15 @@ class DatabaseManager():
         existing_user = cursor.fetchall()
 
         if existing_user:
-            print("Email already exists")
             cursor.close()
             return False
         else:
             '''Insert new user into the database'''
-            print("Creating new account")
             sql_query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%s, %s, %s, %s);"
             data = (self.first_name, self.last_name, self.email, self.password,)
             cursor.execute(sql_query, data)
 
             self.db_connection.commit()
-            print("User created successfully")
             cursor.close()
             return True
 
@@ -88,7 +82,6 @@ class DatabaseManager():
         cursor = self.db_connection.cursor()
         query1 = "SELECT user_id FROM users WHERE email = %s;"
         data1 = (email,)
-        print(DatabaseManager.email)
         cursor.execute(query1, data1)
         user_id = cursor.fetchone()
         if user_id:
@@ -99,7 +92,6 @@ class DatabaseManager():
             cursor.close()
             return True
         else:
-            print("User not found")
             cursor.close()
             return False
 
@@ -112,12 +104,9 @@ class DatabaseManager():
         user_id = cursor.fetchone()
         if user_id:
             query = "SELECT note, date_now from notes where user_id = %s"
-            
             data = (user_id[0],)
-
             cursor.execute(query, data)
             previous_notes = cursor.fetchall()
-            print(cursor.fetchall())
             self.db_connection.commit()
             cursor.close()
             return previous_notes
