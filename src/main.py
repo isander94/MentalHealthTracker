@@ -3,7 +3,6 @@ from tkinter import *
 from tkinter.ttk import *
 from daily_journal import DailyJournal
 from previous_notes import Previous_notes
-from statistic import Statistic
 from db_connector import DatabaseManager
 import matplotlib.pyplot as pyplot
 from datetime import datetime
