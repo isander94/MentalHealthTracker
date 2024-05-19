@@ -1,3 +1,4 @@
+"""Module for daily journal window."""
 from tkinter import *
 from tkinter.ttk import *
 from db_connector import DatabaseManager
@@ -6,8 +7,11 @@ def rgb_to_hex(rgb):
     return "#{:02x}{:02x}{:02x}".format(*rgb)
 
 class DailyJournal(Toplevel):
-    """Daily journal window."""
+    """Class for Daily journal window."""
+
+
     def __init__(self, parent):
+        """Initialazing the calss."""
         super().__init__(parent)
         self.title("Daily Journal")
         self.geometry("900x900")
@@ -25,10 +29,10 @@ class DailyJournal(Toplevel):
         title_label.pack(pady=5)
 
         # To be able to save mood rating
-        Label(self, text="How do you feel from 1-10?", font=("Helvetica", 12, "bold"), foreground="white", background=bg_color).pack(pady=10)        
+        Label(self, text="How do you feel from 1-10?", font=("Helvetica", 12, "bold"), foreground="white", background=bg_color).pack(pady=10)
         self.mood_text_area = Text(self, width=5, height=2)
         self.mood_text_area.pack(padx=10, pady=10, anchor="center")
-        
+
 
         # Label for writing area
         self.text_area = Text(self, width=50, height=20)
@@ -52,7 +56,7 @@ class DailyJournal(Toplevel):
         print(len(text))
         if (0 == len(text)) or (len(text) > 100):
             self.message_label.config(text="Please enter a note bellow or equal to 100 characters")
-        else:    
+        else:
             if self.user_db.add_note(text, self.user_db.email):
                 self.message_label.config(text="Note saved successfully")
             else:
@@ -69,7 +73,7 @@ class DailyJournal(Toplevel):
         mood = self.mood_text_area.get("1.0", "end-1c")
         if len(mood) == 0:
             self.message_label.config(text="Please input how you feel from 1-10")
-        else:    
+        else:
             try:
                 if isinstance(mood, str):
                     mood_rating_int = int(mood)
@@ -80,7 +84,7 @@ class DailyJournal(Toplevel):
                         self.message_label.config(text="An error has occurred")
             except:
                 self.message_label.config(text="Please input a valid number from 1-10")
-            
+
     def go_back(self):
         """Function is used to go back to the login window"""
         self.destroy() # closes the sign up window

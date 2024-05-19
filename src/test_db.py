@@ -1,3 +1,4 @@
+"""Module for testing"""
 import unittest
 from datetime import datetime
 from db_connector import DatabaseManager

@@ -1,3 +1,4 @@
+"""Module for login windo.""""
 from tkinter import *
 from tkinter.ttk import *
 #from PIL import Image, ImageTK
@@ -8,8 +9,11 @@ def rgb_to_hex(rgb):
     """Convert RGB color to HEX format"""
     return "#{:02x}{:02x}{:02x}".format(*rgb)
 class LoginWindow(Tk):
-    """Initializes the login window"""
+    """Class the login window."""
+
+
     def __init__(self):
+        """Initializing the class"""
         super().__init__()
         self.title("Log in")
         self.geometry("900x900")  # size of window
