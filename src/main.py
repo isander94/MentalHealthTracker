@@ -63,35 +63,39 @@ class Main(Toplevel):
     def Statistic_window(self):
         # Fetch notes and moods
         moods = self.user_db.get_mood(self.user_db.email)
-        if len(moods) >= 7:
+
+        if len(moods) == 0:
+            self.message_label.config(text="Not enough data")
+        else:
             # Create lists where dates and lists will be stored
             dates_list = []
             moods_list = []
-            # Extract the moods and dates from tuples and place in a list
+            # Extract moods and dates from the tuple list, and place in new lists
             for x in range(len(moods)):
                 moods_list.append(moods[x][0])
                 dates_list.append(moods[x][1])
 
-            for x in range (len(dates_list)):
-                date_string = dates_list[x].strftime("%m-%d")
-                dates_list[x] = date_string
-                
-            # Take the last 7 dates and moods
-            dates_list = dates_list[-7:]
-            moods_list = moods_list[-7:]
-            
+            print("Moods:")
+            print(moods_list)
+            print("Dates:")
+            print(dates_list)
 
-            pyplot.title("Mood statistics over 7 days")
+            # Format the dates
+            for x in range (len(dates_list)):
+                date_string = dates_list[x].strftime("%d-%m")
+                dates_list[x] = date_string
+
+            if len(moods) >= 7:
+            # If there are more than 7 entires, extract the last 7
+                dates_list = dates_list[-7:]
+                moods_list = moods_list[-7:]
+
+            pyplot.title("Mood statistics")
             pyplot.xlabel("Date")
             pyplot.ylabel("Mood")
             pyplot.plot(dates_list, moods_list)
             pyplot.show()
-        else:
-            self.message_label.config(text="Not enough data")
-
-
-
-    
+            
     def go_back(self):
         """Function is used to go back to the login window"""
         self.destroy() # closes the sign up window
