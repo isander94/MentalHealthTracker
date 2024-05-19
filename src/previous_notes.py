@@ -1,4 +1,4 @@
-"""Module for previous notes window.""""
+"""Module for previous notes window."""
 from tkinter import *
 from tkinter.ttk import *
 from db_connector import DatabaseManager
