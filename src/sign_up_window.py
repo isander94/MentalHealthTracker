@@ -56,8 +56,13 @@ class LoginSystem(Toplevel):
         self.message_label.place(x=350, y=390) # Placement of error message
 
         # Creation of button with text "quit program" that will execute on_close()
-        quit = Button(self, text="Quit program", command=self.on_close)
+        quit = Button(self, text="Quit program", command=self.on_close) 
         quit.place(x=350, y=470) # Placement of button
+        
+        # Creation of button with text "quit program" that will execute on_close()
+        go_back = Button(self, text="Go back", command=self.go_back)
+        go_back.place(x=350, y=515) # Placement of button
+
 
     def add_user(self):
         """Function is used to add a user to the database if certain values return True"""
