@@ -16,7 +16,7 @@ class DailyJournal(Toplevel):
         self.title("Daily Journal")
         self.geometry("900x900")
         # Background color
-        bg_color = rgb_to_hex((120, 163, 156))
+        bg_color = rgb_to_hex((135, 190, 128))
         self.configure(background=bg_color)
         self.user_db = DatabaseManager()
         # For message when pressing save
