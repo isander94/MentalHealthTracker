@@ -83,9 +83,11 @@ class TestDatabase(unittest.TestCase):
     def test_get_note(self):
         """Try to fetch a note associated with a user"""
         email = "nils@mail.com"
-        expected_note = "This is a test note 2024-05-13"
+        date_string = datetime.now()
+        date_formatted = date_string.strftime("%Y-%m-%d")
+        expected_note = f"This is a test note {date_formatted}"
         result = self.my_connection.previous_notes(email)
-        note = result[0][0] + " " + result[0][1].strftime("%Y-%m-%d")
+        note = result[-1][0] + " " + result[-1][1].strftime("%Y-%m-%d")
         self.assertEqual(expected_note, note)
 
 
