@@ -66,7 +66,7 @@ class DailyJournal(Toplevel):
     
     def save_entry(self):
         """Saves an entry consisting of a note and a mood"""
-        if self.save_note() or self.save_mood():
+        if self.save_note() and self.save_mood():
             self.go_back()
              
 
@@ -80,6 +80,7 @@ class DailyJournal(Toplevel):
         mood = self.mood_text_area.get("1.0", "end-1c")
         if len(mood) == 0:
             self.message_label.config(text="Empty input")
+            return False
         else:
             try:
                 if isinstance(mood, str):

@@ -71,30 +71,11 @@ class Main(Toplevel):
         moods = self.user_db.get_mood(self.user_db.email)
 
         if len(moods) >= 7:
-            # Create lists where dates and lists will be stored
-            """ dates_list = []
-            moods_list = []
-            # Extract the moods and dates from tuples and place in a list
-            for x in range(len(moods)):
-                moods_list.append(moods[x][1])
-                dates_list.append(moods[x][0])
-
-            # Format the date strings
-            for x in range (len(dates_list)):
-                date_string = dates_list[x].strftime("%m-%d")
-                dates_list[x] = date_string
-
-            # Remove duplicates by creating a dictionary and then changing them back to a list
-            dict = {}
-            for i in range(len(dates_list)):
-                dict[dates_list[i]] = moods_list[i]
-            dates_list = list(dict.keys())
-            moods_list = list(dict.values()) """
             mood_dict = {}
             for date, mood in moods:
                 date_string = date.strftime("%m-%d")
                 mood_dict[date_string] = mood  # This will keep the last mood for each date
-
+            print(mood_dict)
             # Convert the dictionary back to lists
             dates_list = list(mood_dict.keys())
             moods_list = list(mood_dict.values())
@@ -105,15 +86,16 @@ class Main(Toplevel):
 
 
             # Take the last 7 dates and moods
-            dates_list = dates_list[-7:]
-            moods_list = moods_list[-7:]
+            sorted_dates = dates_list[-7:]
+            sorted_moods = moods_list[-7:]
 
             # Create a graph
             pyplot.title("Mood statistics")
             pyplot.xlabel("Date")
             pyplot.ylabel("Mood")
-            pyplot.plot(dates_list, moods_list)
+            pyplot.plot(sorted_dates, sorted_moods)
             pyplot.show()
+            pyplot.close()
         else:
             # If there is't atleast 7 entries, the graph will not be displayed
             self.message_label.config(text="Not enough data")
