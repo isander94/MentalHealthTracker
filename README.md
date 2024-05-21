@@ -21,8 +21,9 @@ The Mental Health Tracker App is designed to support individuals in tracking the
     - matplotlib.pyplot for graph
 
 ## Installation
-    Clone the repository:
-- git clone: <https://github.com/isander94/MentalHealthTracker.git>
+ Clone the repository:
+ 
+    - git clone: <https://github.com/isander94/MentalHealthTracker.git>
 
 ## Run the Program
 - python login_window.py
