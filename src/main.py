@@ -28,7 +28,7 @@ class Main(Toplevel):
 
         # wellcome message label
         label_font = ("Helvetica", 16, "bold")
-        label = Label(self, text=f"Welcome {self.user_db.first_name}\nWhat do you want to do today?",
+        label = Label(self, text=f"Welcome! \nWhat do you want to do today?",
              foreground="white", font=label_font, background=bg_color, anchor="center")
         label.pack(pady=20)
 
